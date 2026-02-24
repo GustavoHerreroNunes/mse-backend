@@ -1,4 +1,5 @@
 scripts.txt
+client_secrets.json
+credentials.json
 .env
 **/__pycache__
-/venv
