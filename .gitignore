@@ -1,0 +1,4 @@
+scripts.txt
+.env
+**/__pycache__
+/venv
