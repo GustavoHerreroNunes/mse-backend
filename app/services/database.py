@@ -8,7 +8,9 @@ def get_db_engine():
         db_url,
         echo=False,
         # pool_recycle=3600,
-        pool_pre_ping=True
+        pool_pre_ping=True,
+        pool_size=5,        # Max persistent connections per instance
+        max_overflow=2      # Extra connections allowed under load
     )
     with engine.connect() as conn:
         print('[JIT]')
