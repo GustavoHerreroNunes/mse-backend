@@ -1,15 +1,7 @@
 import json
-import os
 import logging
 import re
-from openai import OpenAI, OpenAIError
-from dotenv import load_dotenv
-
-# Carrega variáveis do .env
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-client = OpenAI(api_key=api_key)
+from reportlab_pages.utils.gemini_client import prompt_model
 
 # Mapeamento de colunas para descrições legíveis – Wire Ropes
 FIELD_DESCRIPTIONS_WIRE = {
@@ -325,34 +317,22 @@ def ai_lifting_condition(data: dict[str, str], lifting_type: str) -> list[str]:
         return ["No negative findings observed."]
 
     try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            temperature=0,
+        raw_content = prompt_model(
+            system=(
+                f"You are a technical inspector specialized in lifting gear inspections ({lifting_type}). "
+                "The user is giving you only the fields that failed the inspection — do not assume or infer anything else. "
+                "Generate up to SIX concise and professional technical remarks ONLY about those problems. "
+                "DO NOT generate any comment about components that are OK or have no issues. "
+                "DO NOT assume a field means 'OK' just because the description mentions 'no cracks' or 'no wear' — the input is filtered to only show problems. "
+                "Avoid repeating comments about the same issue. If a single issue is detected (e.g. a cut), write only one observation about it. "
+                "Write each remark like a real inspection report. "
+                "Each sentence must be in English, under 90 words, start with uppercase, and end with a period. "
+                "Return only a JSON array of 1 to 6 strings — no explanations or formatting."
+            ),
+            user=json.dumps(filtered_descriptions),
             max_tokens=1200,
-            top_p=1,
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        f"You are a technical inspector specialized in lifting gear inspections ({lifting_type}). "
-                        "The user is giving you only the fields that failed the inspection — do not assume or infer anything else. "
-                        "Generate up to SIX concise and professional technical remarks ONLY about those problems. "
-                        "DO NOT generate any comment about components that are OK or have no issues. "
-                        "DO NOT assume a field means 'OK' just because the description mentions 'no cracks' or 'no wear' — the input is filtered to only show problems. "
-                        "Avoid repeating comments about the same issue. If a single issue is detected (e.g. a cut), write only one observation about it. "
-                        "Write each remark like a real inspection report. "
-                        "Each sentence must be in English, under 90 words, start with uppercase, and end with a period. "
-                        "Return only a JSON array of 1 to 6 strings — no explanations or formatting."
-                    )
-                },
-                {
-                    "role": "user",
-                    "content": json.dumps(filtered_descriptions)
-                }
-            ]
         )
 
-        raw_content = response.choices[0].message.content
         clean = re.sub(r"```(?:json|text)?", "", raw_content).strip()
         obs_bullets = json.loads(clean)
 
@@ -361,6 +341,9 @@ def ai_lifting_condition(data: dict[str, str], lifting_type: str) -> list[str]:
 
         return obs_bullets
 
-    except (OpenAIError, ValueError, json.JSONDecodeError) as exc:
+    except (ValueError, json.JSONDecodeError) as exc:
+        logging.warning(f"Failed to generate lifting inspection comments: {exc}")
+        return ["Overall, the lifting material was determined to be in satisfactory operational condition."]
+    except Exception as exc:
         logging.warning(f"Failed to generate lifting inspection comments: {exc}")
         return ["Overall, the lifting material was determined to be in satisfactory operational condition."]

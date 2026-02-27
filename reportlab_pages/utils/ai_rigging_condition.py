@@ -1,15 +1,7 @@
 import json
-import os
 import logging
 import re
-from openai import OpenAI, OpenAIError
-from dotenv import load_dotenv
-
-# Carrega variáveis do .env
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-
-client = OpenAI(api_key=api_key)
+from reportlab_pages.utils.gemini_client import prompt_model
 
 # --- Synthetic Sling ---
 FIELD_DESCRIPTIONS = {
@@ -56,33 +48,21 @@ def ai_rigging_condition(data: dict[str, str]) -> list[str]:
         return ["No negative findings observed."]
 
     try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            temperature=0,
+        raw_content = prompt_model(
+            system=(
+                "You are a technical inspector specialized in lifting operations of a cargo. "
+                "The user is providing you with only the inspection items that FAILED during a cargo lifting operation — these are operational or safety issues that occurred. "
+                "Generate up to SIX concise and professional technical remarks about these issues. "
+                "DO NOT generate comments about elements that passed or are not mentioned. "
+                "Avoid redundancy: if multiple fields refer to the same issue (e.g., slings twisted or poorly positioned), summarize into a single comment. "
+                "Write each observation like an official inspection report note, in clear technical English. "
+                "Each sentence must be under 90 words, start with uppercase, and end with a period. "
+                "Return ONLY a JSON array of 1 to 6 strings — no explanations, markdown, or formatting outside the array."
+            ),
+            user=json.dumps(filtered_descriptions),
             max_tokens=1200,
-            top_p=1,
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a technical inspector specialized in lifting operations of a cargo. "
-                        "The user is providing you with only the inspection items that FAILED during a cargo lifting operation — these are operational or safety issues that occurred. "
-                        "Generate up to SIX concise and professional technical remarks about these issues. "
-                        "DO NOT generate comments about elements that passed or are not mentioned. "
-                        "Avoid redundancy: if multiple fields refer to the same issue (e.g., slings twisted or poorly positioned), summarize into a single comment. "
-                        "Write each observation like an official inspection report note, in clear technical English. "
-                        "Each sentence must be under 90 words, start with uppercase, and end with a period. "
-                        "Return ONLY a JSON array of 1 to 6 strings — no explanations, markdown, or formatting outside the array."
-                    )
-                },
-                {
-                    "role": "user",
-                    "content": json.dumps(filtered_descriptions)
-                }
-            ]
         )
 
-        raw_content = response.choices[0].message.content
         clean = re.sub(r"```(?:json|text)?", "", raw_content).strip()
         obs_bullets = json.loads(clean)
 
@@ -91,6 +71,9 @@ def ai_rigging_condition(data: dict[str, str]) -> list[str]:
 
         return obs_bullets
 
-    except (OpenAIError, ValueError, json.JSONDecodeError) as exc:
+    except (ValueError, json.JSONDecodeError) as exc:
+        logging.warning(f"Failed to generate lifting inspection comments: {exc}")
+        return ["No further comments to be made."]
+    except Exception as exc:
         logging.warning(f"Failed to generate lifting inspection comments: {exc}")
         return ["No further comments to be made."]
