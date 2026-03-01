@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   title: MSE (Test) Gateway
   description: The Test Environent for the API Gateway MSE-Central service - an API dedicated to accessing and manipulating data shared between different projects
-  version: 1.0.2
+  version: 1.0.3
 tags:
   - name: Cargo
     description: Cargo management endpoints
@@ -95,9 +95,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Survey PDF
@@ -167,9 +167,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 180
   /survey_pdf/{id_demanda}:
     get:
@@ -194,9 +194,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Survey PDF
@@ -225,9 +225,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -255,9 +255,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /survey_pdf:
     post:
       tags:
@@ -287,9 +287,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -311,9 +311,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /statement-of-facts/demanda/{demanda_id}:
     get:
       tags:
@@ -333,9 +333,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -361,9 +361,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /statement-of-facts/demanda/cargo/{cargo_id}:
     get:
       tags:
@@ -383,9 +383,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -411,9 +411,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /statement-of-facts/{event_id}:
     put:
       tags:
@@ -444,9 +444,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Statement of Facts
@@ -472,9 +472,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -500,9 +500,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /statement-of-facts/cargo/{event_id}:
     put:
       tags:
@@ -533,9 +533,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Statement of Facts
@@ -561,9 +561,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -589,9 +589,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /statement-of-facts:
     post:
       tags:
@@ -616,9 +616,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -639,9 +639,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /statement-of-facts/cargo:
     post:
       tags:
@@ -666,9 +666,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -689,9 +689,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /surveyor/users/email/{email}:
     options:
       tags:
@@ -724,9 +724,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Users Surveyor
@@ -781,9 +781,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /customer/users/email/{email}:
     options:
       tags:
@@ -816,9 +816,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Users Customer
@@ -873,9 +873,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lashing-material/cargo/{id_cargo}:
     get:
       tags:
@@ -895,9 +895,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -924,9 +924,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting-material/cargo/{id_cargo}:
     get:
       tags:
@@ -946,9 +946,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -975,9 +975,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /relation/{relation_type}/{id_rlt}:
     delete:
       tags:
@@ -1008,9 +1008,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -1047,9 +1047,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /relation:
     options:
       tags:
@@ -1072,9 +1072,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Relation
@@ -1130,9 +1130,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/comments/task/{task_id}/section/{section_index}:
     options:
       tags:
@@ -1170,9 +1170,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -1258,9 +1258,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/comments/lifting/{lifting_id}/subsection/{sub_section_index}:
     options:
       tags:
@@ -1298,9 +1298,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -1386,9 +1386,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/comments/lashing/{lashing_id}/subsection/{sub_section_index}:
     options:
       tags:
@@ -1426,9 +1426,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -1514,9 +1514,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lashing/inspection/{lashing_type}:
     post:
       tags:
@@ -1544,9 +1544,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -1578,9 +1578,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lashing/inspection/{lashing_id}/{lashing_type}:
     get:
       tags:
@@ -1611,9 +1611,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Lashing Inspection
@@ -1647,9 +1647,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Lashing Inspection
@@ -1679,9 +1679,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -1718,9 +1718,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting/inspection/{lifting_type}:
     post:
       tags:
@@ -1748,9 +1748,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -1782,9 +1782,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting/inspection/{lifting_id}/{lifting_type}:
     get:
       tags:
@@ -1815,9 +1815,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Lifting Inspection
@@ -1851,9 +1851,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Lifting Inspection
@@ -1883,9 +1883,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -1922,9 +1922,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/comments/cargo/{cargo_id}/subsection/{sub_section_index}:
     options:
       tags:
@@ -1962,9 +1962,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -2050,9 +2050,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/comments/task/{task_id}/section/{section_index}/subsection/{subsection_index}:
     options:
@@ -2096,9 +2096,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -2189,9 +2189,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/photos/task/{task_id}/section/{section_index}/subsection/{subsection_index}:
     options:
       tags:
@@ -2234,9 +2234,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -2315,9 +2315,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tarefas/{id_demanda}:
     options:
       tags:
@@ -2354,9 +2354,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tarefas
@@ -2429,9 +2429,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS  
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /notifications-customer:
     options:
       tags:
@@ -2458,9 +2458,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Notifications Customer
@@ -2541,9 +2541,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 80.0
   /notifications-customer/{notification_id}:
     options:
@@ -2577,9 +2577,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Notifications Customer
@@ -2630,9 +2630,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /notifications-customer/user/{user_id}:
     options:
       tags:
@@ -2665,9 +2665,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app/
+        address: https://mse-api-ayddoiktrq-rj.a.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Notifications Customer
@@ -2736,9 +2736,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /customer/users:
     options:
       tags:
@@ -2765,9 +2765,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Users Customer
@@ -2809,9 +2809,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Users Customer
@@ -2884,9 +2884,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /customer/users/{id}:
     options:
       tags:
@@ -2919,9 +2919,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Users Customer
@@ -2976,9 +2976,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Users Customer
@@ -3049,9 +3049,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Users Customer
@@ -3102,9 +3102,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /customer/auth/login:
     options:
       tags:
@@ -3131,9 +3131,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Users Customer
@@ -3213,9 +3213,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /demandas/surveyor/customer/{customer_id}:
     options:
       tags:
@@ -3249,9 +3249,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Demandas
@@ -3370,9 +3370,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /checklist:
     post:
       tags:
@@ -3402,9 +3402,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -3426,9 +3426,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /checklist/{id_survey}:
     get:
       tags:
@@ -3452,9 +3452,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Checklist
@@ -3483,9 +3483,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -3513,9 +3513,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /offline_provider:
     options:
       tags:
@@ -3547,9 +3547,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Offline Provider
@@ -3585,9 +3585,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /offline_provider/export_user_data:
     options:
       tags:
@@ -3619,9 +3619,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Offline Provider
@@ -3657,9 +3657,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 180.0
   /offline_provider/user/{user_id}/import_user_data:
     get:
@@ -3702,9 +3702,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 180.0
     options:
       tags:
@@ -3741,9 +3741,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tarefas:
     options:
       tags:
@@ -3775,9 +3775,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tarefas
@@ -3998,9 +3998,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS  
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /demandas:
     options:
       tags:
@@ -4032,9 +4032,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Demandas
@@ -4198,9 +4198,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS  
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting-material:
     post:
       tags:
@@ -4227,9 +4227,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4251,9 +4251,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting-material/{id_lifting_material}:
     get:
       tags:
@@ -4273,9 +4273,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Lifting Material
@@ -4300,9 +4300,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Lifting Material
@@ -4350,9 +4350,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4379,9 +4379,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting-material/all/{id_task}:
     get:
       tags:
@@ -4406,9 +4406,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4435,9 +4435,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting-operation:
     post:
       tags:
@@ -4464,9 +4464,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4497,9 +4497,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lifting-operation/{cargo_id}:
     get:
       tags:
@@ -4525,9 +4525,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Lifting Operation
@@ -4556,9 +4556,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4590,9 +4590,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/storage:
     post:
       tags:
@@ -4620,9 +4620,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4654,9 +4654,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/storage/{cargo_id}:
     get:
       tags:
@@ -4682,9 +4682,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Cargo Storage
@@ -4713,9 +4713,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4747,9 +4747,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lashing-material:
     post:
       tags:
@@ -4776,9 +4776,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4800,9 +4800,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lashing-material/{id_lashing_material}:
     get:
       tags:
@@ -4823,9 +4823,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Lashing Material
@@ -4850,9 +4850,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Lashing Material
@@ -4900,9 +4900,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4930,9 +4930,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /lashing-material/all/{id_task}:
     get:
       tags:
@@ -4957,9 +4957,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -4986,9 +4986,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo-lashing:
     post:
       tags:
@@ -5018,9 +5018,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -5042,9 +5042,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo-lashing/{cargo_id}:
     get:
       tags:
@@ -5068,9 +5068,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Lashing Cargo
@@ -5099,9 +5099,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -5129,9 +5129,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/inspection/{cargo_type}:
     post:
       tags:
@@ -5159,9 +5159,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -5193,9 +5193,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/inspection/{cargo_id}/{cargo_type}:
     get:
       tags:
@@ -5226,9 +5226,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Cargo Inspection
@@ -5262,9 +5262,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Cargo Inspection
@@ -5294,9 +5294,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -5333,9 +5333,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/condition/{cargo_id}:
     options:
       tags:
@@ -5364,9 +5364,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Cargo Condition
@@ -5412,9 +5412,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Cargo Condition
@@ -5530,9 +5530,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/condition:
     options:
       tags:
@@ -5555,9 +5555,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Cargo Condition
@@ -5618,9 +5618,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/{cargo_id}:
     options:
       tags:
@@ -5649,9 +5649,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Cargo
@@ -5743,9 +5743,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Cargo
@@ -5793,9 +5793,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo/by_task/{id_task}:
     options:
       tags:
@@ -5824,9 +5824,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Cargo
@@ -5875,9 +5875,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /cargo:
     options:
       tags:
@@ -5900,9 +5900,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Cargo
@@ -5959,9 +5959,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /generate-pdf/pdf-sections:
     options:
       tags:
@@ -5984,9 +5984,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - AI PDF Generation
@@ -6022,9 +6022,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /generate-pdf/pdf-from-data:
     options:
       tags:
@@ -6047,9 +6047,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - AI PDF Generation
@@ -6082,9 +6082,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /generate-pdf/pdf-only:
     options:
       tags:
@@ -6107,9 +6107,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - AI PDF Generation
@@ -6142,9 +6142,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /generate-pdf/ai-html:
     options:
       tags:
@@ -6168,9 +6168,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - AI PDF Generation
@@ -6207,9 +6207,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /surveyor/users:
     options:
       tags:
@@ -6236,9 +6236,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Users Surveyor
@@ -6284,9 +6284,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Users Surveyor
@@ -6359,9 +6359,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /surveyor/users/{id}:
     options:
       tags:
@@ -6394,9 +6394,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Users Surveyor
@@ -6455,9 +6455,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Users Surveyor
@@ -6528,9 +6528,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Users Surveyor
@@ -6581,9 +6581,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /surveyor/users/{id}/export:
     get:
       tags:
@@ -6643,9 +6643,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 180.0
   /surveyor/auth/login:
     options:
@@ -6673,9 +6673,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Users Surveyor
@@ -6755,9 +6755,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /vessels:
     options:
       tags:
@@ -6784,9 +6784,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Vessels
@@ -6849,9 +6849,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 40.0
     post:
       tags:
@@ -7013,9 +7013,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /vessels/search:
     options:
       tags:
@@ -7048,9 +7048,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Vessels
@@ -7106,9 +7106,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /vessels/{vessel_id}:
     options:
       tags:
@@ -7141,9 +7141,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Vessels
@@ -7247,9 +7247,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Vessels
@@ -7392,9 +7392,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Vessels
@@ -7446,9 +7446,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /vessels/{vessel_id}/cranes:
     options:
       tags:
@@ -7481,9 +7481,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Vessels
@@ -7544,9 +7544,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /vessels/{vessel_id}/cranes/{crane_id}:
     options:
       tags:
@@ -7584,9 +7584,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Vessels
@@ -7650,9 +7650,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Vessels
@@ -7730,9 +7730,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Vessels
@@ -7788,9 +7788,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /vessels/{vessel_id}/cranes/{crane_id}/swl:
     options:
       tags:
@@ -7828,9 +7828,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Vessels
@@ -7904,9 +7904,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /vessels/{vessel_id}/cranes/{crane_id}/swl/{swl_capacity_id}:
     options:
       tags:
@@ -7949,9 +7949,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Vessels
@@ -8044,9 +8044,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Vessels
@@ -8107,9 +8107,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /notifications-surveyor:
     options:
       tags:
@@ -8136,9 +8136,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Notifications
@@ -8214,9 +8214,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 80.0
   /notifications-surveyor/{notification_id}/toggle-read:
     options:
@@ -8250,9 +8250,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Notifications
@@ -8306,9 +8306,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /notifications-surveyor/{notification_id}:
     options:
       tags:
@@ -8341,9 +8341,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Notifications
@@ -8394,9 +8394,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /notifications-surveyor/user/{user_id}:
     options:
       tags:
@@ -8429,9 +8429,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Notifications
@@ -8496,9 +8496,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /notifications-surveyor/user/{user_id}/unread-count:
     options:
       tags:
@@ -8531,9 +8531,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Notifications
@@ -8575,9 +8575,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /attendants-survey:
     options:
       tags:
@@ -8604,9 +8604,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Attendants
@@ -8690,9 +8690,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /attendants-survey/task/{task_id}:
     options:
       tags:
@@ -8725,9 +8725,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Attendants
@@ -8799,9 +8799,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /attendants-survey/{attendant_id}:
     options:
       tags:
@@ -8834,9 +8834,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Attendants
@@ -8886,9 +8886,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding:
     options:
       tags:
@@ -8915,9 +8915,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Tasks Survey
@@ -8998,9 +8998,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/{task_id}:
     options:
       tags:
@@ -9033,9 +9033,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -9134,9 +9134,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Tasks Survey
@@ -9219,9 +9219,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Tasks Survey
@@ -9271,9 +9271,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/comments:
     options:
       tags:
@@ -9300,9 +9300,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Tasks Survey
@@ -9387,9 +9387,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/comments/{comment_id}:
     options:
       tags:
@@ -9422,9 +9422,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -9486,9 +9486,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Tasks Survey
@@ -9563,9 +9563,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Tasks Survey
@@ -9627,9 +9627,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/comments/task/{task_id}:
     options:
       tags:
@@ -9662,9 +9662,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -9729,9 +9729,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /tasks-survey/boarding/photos:
     options:
       tags:
@@ -9758,9 +9758,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
     post:
       tags:
@@ -9863,9 +9863,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 150
 
   /tasks-survey/boarding/photos/{photo_id}:
@@ -9900,9 +9900,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
     put:
       tags:
@@ -9972,9 +9972,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
     get:
       tags:
@@ -10038,9 +10038,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Tasks Survey
@@ -10092,9 +10092,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/photos/task/{task_id}:
     options:
@@ -10128,9 +10128,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -10199,9 +10199,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/photos/task/{task_id}/section/{section_index}:
     options:
@@ -10240,9 +10240,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -10316,9 +10316,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/photos/cargo/{cargo_id}/subsection/{sub_section_index}:
     options:
@@ -10357,9 +10357,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -10437,9 +10437,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/photos/lifting/{id_lifting}:
     options:
@@ -10473,9 +10473,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -10548,9 +10548,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/photos/lashing/{id_lashing}:
     options:
@@ -10584,9 +10584,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Tasks Survey
@@ -10659,9 +10659,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
 
 
@@ -10697,9 +10697,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Tasks Survey
@@ -10731,9 +10731,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/bollards/{task_id}:
     options:
@@ -10767,9 +10767,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Tasks Survey
@@ -10801,9 +10801,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/internal/{task_id}:
     options:
@@ -10837,9 +10837,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Tasks Survey
@@ -10871,9 +10871,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /tasks-survey/boarding/task/{task_id}:
     options:
@@ -10907,9 +10907,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
     get:
       tags:
@@ -10940,9 +10940,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
 
   /demandas/surveyor/{user_id}:
@@ -10978,9 +10978,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Demandas
@@ -11104,9 +11104,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /demandas/{demanda_id}/status:
     options:
@@ -11141,9 +11141,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Demandas
@@ -11210,9 +11210,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /demandas/{demanda_id}/location:
     options:
       tags:
@@ -11245,9 +11245,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Demandas
@@ -11319,9 +11319,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /demandas/{demanda_id}/moving:
     options:
       tags:
@@ -11354,9 +11354,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     put:
       tags:
         - Demandas
@@ -11401,9 +11401,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /demandas/{demanda_id}/tarefas/surveyor:
     options:
@@ -11438,9 +11438,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Demandas
@@ -11492,9 +11492,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /demandas/{demanda_id}:
     options:
       tags:
@@ -11528,9 +11528,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Demandas
@@ -11617,9 +11617,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /demandas/tarefas:
     options:
       tags:
@@ -11647,9 +11647,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Demandas
@@ -11691,9 +11691,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /customers:
     options:
       tags:
@@ -11721,9 +11721,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Customers
@@ -11768,9 +11768,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Customers
@@ -11837,9 +11837,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /customers/{customer_id}:
     options:
       tags:
@@ -11873,9 +11873,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Customers
@@ -11930,9 +11930,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /customers/search:
     options:
       tags:
@@ -11961,9 +11961,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Customers
@@ -12020,9 +12020,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /clients/photo:
     options:
       tags:
@@ -12044,9 +12044,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Clients
@@ -12109,9 +12109,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /clients/photo/{id_client}:
     options:
       tags:
@@ -12130,9 +12130,9 @@ paths:
           description: Resposta CORS preflight bem-sucedida
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Clients
@@ -12181,9 +12181,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     delete:
       tags:
         - Clients
@@ -12230,9 +12230,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /medicoes:
     options:
       tags:
@@ -12264,9 +12264,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Medicoes
@@ -12314,9 +12314,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /medicoes/demanda/{demanda_id}:
     get:
       tags:
@@ -12359,9 +12359,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -12397,9 +12397,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 
   /medicoes/by_id/{medicao_id}:
     get:
@@ -12443,9 +12443,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -12481,9 +12481,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /medicoes/export_csv:
     options:
       tags:
@@ -12515,9 +12515,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Medicoes
@@ -12583,9 +12583,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /nota_fiscal:
     options:
       tags:
@@ -12617,9 +12617,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Medicoes
@@ -12670,9 +12670,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /nota_fiscal/by_id/{nota_id}:
     get:
       tags:
@@ -12715,9 +12715,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -12753,9 +12753,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /nota_fiscal/by_etl/{etl_id}:
     get:
       tags:
@@ -12798,9 +12798,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -12836,9 +12836,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /nota_fiscal/export_csv:
     options:
       tags:
@@ -12870,9 +12870,9 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     get:
       tags:
         - Medicoes
@@ -12939,9 +12939,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /pdf_extraction/extract:
     post:
       tags:
@@ -12975,9 +12975,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 120
     options:
       tags:
@@ -12989,9 +12989,9 @@ paths:
           description: CORS preflight response
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 120
   /pdf_extraction/upload:
     options:
@@ -13019,9 +13019,9 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     post:
       tags:
         - Medicoes
@@ -13091,9 +13091,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
         deadline: 180
 
   /health:
@@ -13113,9 +13113,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /health/ping:
     get:
       tags:
@@ -13133,9 +13133,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /db-test:
     get:
       tags:
@@ -13153,9 +13153,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
   /dev/settings/app_version:
     get:
       tags:
@@ -13173,9 +13173,9 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
     options:
       tags:
         - Options
@@ -13196,9 +13196,9 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-915682166260.southamerica-east1.run.app
+        address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
-        jwt_audience: https://mse-api-915682166260.southamerica-east1.run.app
+        jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
 securityDefinitions:
   api_key:
     type: "apiKey"
