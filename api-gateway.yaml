@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   title: MSE (Test) Gateway
   description: The Test Environent for the API Gateway MSE-Central service - an API dedicated to accessing and manipulating data shared between different projects
-  version: 1.0.0
+  version: 1.0.1
 tags:
   - name: Cargo
     description: Cargo management endpoints
