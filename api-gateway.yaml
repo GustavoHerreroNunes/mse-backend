@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   title: MSE (Test) Gateway
   description: The Test Environent for the API Gateway MSE-Central service - an API dedicated to accessing and manipulating data shared between different projects
-  version: 1.0.4
+  version: 1.0.5
 tags:
   - name: Cargo
     description: Cargo management endpoints
@@ -59,7 +59,7 @@ tags:
   - name: Offline Provider
     description: Database sync for modile app in offline environments
   - name: Medicoes
-    description: Medições done in the finances module
+    description: Financial measurements, tax invoices, and related fiscal document endpoints
   - name: System
     description: System health and testing endpoints
   - name: Options
@@ -101,10 +101,10 @@ paths:
     post:
       tags:
         - Survey PDF
-      summary: Adicionar pdf assinado.
+      summary: Upload a signed survey PDF.
       description: |
-        Registra 1 PDF assinado.
-        O PDF é armazenado no Google Drive e o caminho da URL é persistido no banco de dados.
+        Uploads and registers a signed survey PDF document for a given survey demand.
+        The PDF file is stored in Google Drive and the resulting URL is persisted in the database, marking the survey report as officially signed and filed.
       operationId: add_pdf
       consumes:
         - multipart/form-data
@@ -113,17 +113,17 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: formData
           name: data
           required: true
           type: string
-          description: 'JSON string contendo id_demanda. Exemplo: {"id_demanda": 42}'
+          description: 'JSON string containing the survey demand identifier. Example: {"id_demanda": 42}'
         - in: formData
           name: file
           type: string
           required: false
-          description: "Arquivo do PDF assinado"
+          description: "The signed survey PDF file to be uploaded"
       responses:
         "201":
           description: "PDF adicionado com sucesso"
@@ -175,8 +175,8 @@ paths:
     get:
       tags:
         - Survey PDF
-      summary: Obter survey PDF
-      description: Retorna os dados do survey PDF com base no ID da demanda.
+      summary: Retrieve survey PDF record
+      description: Returns the survey PDF record associated with the given survey demand, including the stored document URL and signing status.
       operationId: get_survey_pdf
       produces:
         - application/json
@@ -185,7 +185,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da demanda
+          description: Unique identifier of the survey demand
       responses:
         200:
           description: Dados retornados com sucesso
@@ -200,8 +200,8 @@ paths:
     put:
       tags:
         - Survey PDF
-      summary: Atualizar survey pdf
-      description: Atualiza campos do survey pdf baseado no ID da demanda.
+      summary: Update survey PDF record
+      description: Updates the fields of a survey PDF record identified by the survey demand ID. This endpoint is used to update the document URL or signing status after modifications.
       operationId: update_survey_pdf
       consumes:
         - application/json
@@ -212,7 +212,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da demanda
+          description: Unique identifier of the survey demand
       responses:
         200:
           description: Status PDF atualizado com sucesso
@@ -262,8 +262,8 @@ paths:
     post:
       tags:
         - Survey PDF
-      summary: Adicionar survey PDF
-      description: Adiciona uma nova entrada de survey PDF vinculada a uma demanda existente.
+      summary: Create a new survey PDF record
+      description: Creates a new survey PDF record linked to an existing survey demand. This initializes the PDF tracking entry before the signed document is uploaded.
       operationId: add_survey_pdf
       consumes:
         - application/json
@@ -274,7 +274,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da demanda
+          description: Unique identifier of the survey demand
       responses:
         201:
           description: Status PDF criado com sucesso
@@ -319,12 +319,14 @@ paths:
       tags:
         - Statement of Facts
       summary: Get all statement of facts entries for a demanda
+      description: Retrieves all Statement of Facts event log entries associated with a specific survey demand. The Statement of Facts is an official chronological record of all significant events occurring during a maritime operation.
       operationId: getStatementOfFactsByDemanda
       parameters:
         - name: demanda_id
           in: path
           required: true
           type: integer
+          description: Unique identifier of the survey demand
       responses:
         200:
           description: OK
@@ -368,13 +370,15 @@ paths:
     get:
       tags:
         - Statement of Facts
-      summary: Get all statement of facts entries for a cargo
+      summary: Get all statement of facts entries for a cargo item
+      description: Retrieves all Statement of Facts event log entries associated with a specific cargo item being inspected. This allows surveyors to view the event history for a particular cargo within the maritime operation.
       operationId: getStatementOfFactsByCargo
       parameters:
         - name: cargo_id
           in: path
           required: true
           type: integer
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: OK
@@ -419,6 +423,7 @@ paths:
       tags:
         - Statement of Facts
       summary: Update statement of facts by event ID
+      description: Updates a specific Statement of Facts event entry identified by its event ID. This allows surveyors to correct or supplement the logged details of a recorded maritime operation event.
       operationId: updateStatementOfFacts
       consumes:
         - application/json
@@ -427,11 +432,12 @@ paths:
           in: path
           required: true
           type: integer
+          description: Unique identifier of the Statement of Facts event entry
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: Updated successfully
@@ -451,17 +457,19 @@ paths:
       tags:
         - Statement of Facts
       summary: Delete statement of facts by event ID
+      description: Permanently removes a specific Statement of Facts event entry by its event ID. This should be used when an event was logged in error or needs to be removed from the official operation record.
       operationId: deleteStatementOfFacts
       parameters:
         - name: event_id
           in: path
           required: true
           type: integer
+          description: Unique identifier of the Statement of Facts event entry
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: Deleted successfully
@@ -507,7 +515,8 @@ paths:
     put:
       tags:
         - Statement of Facts
-      summary: Update statement of facts by event ID
+      summary: Update cargo-specific statement of facts by event ID
+      description: Updates a cargo-specific Statement of Facts event entry identified by its event ID. This endpoint handles events that are specifically associated with cargo operations, such as cargo loading, discharge, or condition changes.
       operationId: updateStatementOfFactsCargo
       consumes:
         - application/json
@@ -516,11 +525,12 @@ paths:
           in: path
           required: true
           type: integer
+          description: Unique identifier of the cargo-related Statement of Facts event entry
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: Updated successfully
@@ -539,18 +549,20 @@ paths:
     delete:
       tags:
         - Statement of Facts
-      summary: Delete statement of facts by event ID
+      summary: Delete cargo-specific statement of facts by event ID
+      description: Permanently removes a cargo-specific Statement of Facts event entry by its event ID. Use this when a cargo-related event was logged in error or must be removed from the official maritime operation record.
       operationId: deleteStatementOfFactsCargo
       parameters:
         - name: event_id
           in: path
           required: true
           type: integer
+          description: Unique identifier of the cargo-related Statement of Facts event entry
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: Deleted successfully
@@ -597,6 +609,7 @@ paths:
       tags:
         - Statement of Facts
       summary: Add new statement of facts entry
+      description: Creates a new event entry in the Statement of Facts log for a maritime operation. The Statement of Facts records significant events such as vessel arrival, loading/discharge commencement, delays, and completion times.
       operationId: addStatementOfFacts
       consumes:
         - application/json
@@ -605,7 +618,7 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         201:
           description: Created
@@ -646,7 +659,8 @@ paths:
     post:
       tags:
         - Statement of Facts
-      summary: Add new statement of facts entry
+      summary: Add new cargo-specific statement of facts entry
+      description: Creates a new cargo-related event entry in the Statement of Facts log. This endpoint is used to log events specifically associated with cargo operations, such as cargo condition observations, loading events, or cargo-related delays during the maritime survey.
       operationId: addStatementOfFactsCargo
       consumes:
         - application/json
@@ -655,7 +669,7 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         201:
           description: Created
@@ -730,22 +744,22 @@ paths:
     get:
       tags:
         - Users Surveyor
-      summary: Obter um usuário surveyor específico
+      summary: Get a specific surveyor user by email
       description: |
-        Recupera informações detalhadas sobre um usuário surveyor específico pelo seu email.
-        Útil para visualizar perfis de usuário e gerenciar contas individuais.
+        Retrieves detailed profile information for a specific surveyor user identified by their email address.
+        Useful for viewing surveyor account details and managing individual surveyor profiles.
       operationId: get_user_surveyor_email
       parameters:
         - in: path
           name: email
           required: true
           type: string
-          description: "Email do usuário"
+          description: "Email address of the surveyor user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do usuário vistoriador"
@@ -822,22 +836,22 @@ paths:
     get:
       tags:
         - Users Customer
-      summary: Obter um usuário surveyor específico
+      summary: Get a specific customer user by email
       description: |
-        Recupera informações detalhadas sobre um usuário surveyor específico pelo seu email.
-        Útil para visualizar perfis de usuário e gerenciar contas individuais.
+        Retrieves detailed profile information for a specific customer user identified by their email address.
+        Useful for viewing customer account details and managing individual customer user profiles.
       operationId: get_user_customer_email
       parameters:
         - in: path
           name: email
           required: true
           type: string
-          description: "Email do usuário"
+          description: "Email address of the customer user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do usuário vistoriador"
@@ -880,13 +894,15 @@ paths:
     get:
       tags:
         - Lashing Material
-      summary: Get all lashing materials for a cargo
+      summary: Get all lashing materials for a cargo item
+      description: Retrieves all lashing material records associated with a specific cargo item. Lashing materials include straps, chains, and other securing equipment used to safely fasten cargo during transport.
       operationId: getcargoLashingMaterials
       parameters:
         - in: path
           name: id_cargo
           required: true
           type: integer
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: OK
@@ -931,13 +947,15 @@ paths:
     get:
       tags:
         - Lifting Material
-      summary: Get all lifting materials for a cargo
+      summary: Get all lifting materials for a cargo item
+      description: Retrieves all lifting material records associated with a specific cargo item. Lifting materials include cranes, slings, shackles, and other equipment used for hoisting and handling cargo during vessel operations.
       operationId: getCargoliftingMaterials
       parameters:
         - name: id_cargo
           in: path
           required: true
           type: integer
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: OK
@@ -982,8 +1000,8 @@ paths:
     delete:
       tags:
         - Relation
-      summary: Deletar uma relation
-      description: Remove uma relation específica pelo ID.
+      summary: Delete a relation by ID
+      description: Removes a specific relation link between a cargo item and a lashing or lifting material, identified by relation type and ID. This breaks the association between the cargo and its securing or lifting equipment.
       operationId: delete_relation_inspection
       produces:
         - application/json
@@ -992,12 +1010,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: "ID do relation"
+          description: "Unique identifier of the relation"
         - name: relation_type
           in: path
           required: true
           type: string
-          description: "tipo de relation"
+          description: "Type of relation (e.g., lashing or lifting)"
       responses:
         200:
           description: Relation deleted successfully
@@ -1078,16 +1096,16 @@ paths:
     post:
       tags:
         - Relation
-      summary: Adicionar novo relation
+      summary: Create a new relation
       description: |
-        Cria um novo relation entre lifting ou lashing com uma carga.
+        Creates a new relation linking a cargo item with a lashing or lifting material. This association records which securing or hoisting equipment is being used for a specific cargo item during the survey.
       operationId: add_relation
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: body
           name: body
           required: true
@@ -1176,27 +1194,27 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todos os comentários de uma tarefa e sessão específica
+      summary: Get all comments for a specific task and section
       description: |
-        Recupera todos os comentários associadas a uma tarefa específica em uma sessão.
-        Os comentários são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspector comments associated with a specific boarding survey task within a given section of the inspection checklist.
+        Comments are returned ordered by section index and provide surveyor observations recorded during the inspection.
       operationId: get_comments_from_task_section
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the survey task"
         - in: path
           name: section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the section within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de comentários da tarefa"
@@ -1304,27 +1322,27 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todos os comentários de uma lifting e sub-sessão específica
+      summary: Get all comments for a lifting material in a specific subsection
       description: |
-        Recupera todos os comentários associadas a uma lifting específica em uma sub-sessão.
-        Os comentários são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspector comments associated with a specific lifting material item within a given subsection of the inspection checklist.
+        Comments are returned ordered by subsection index and provide surveyor observations about the lifting equipment.
       operationId: get_all_comments_from_lifting_subsection
       parameters:
         - in: path
           name: lifting_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the lifting material"
         - in: path
           name: sub_section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the subsection within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de comentários da lifting"
@@ -1432,27 +1450,27 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todos os comentários de uma lashing e sub-sessão específica
+      summary: Get all comments for a lashing material in a specific subsection
       description: |
-        Recupera todos os comentários associadas a uma lashing específica em uma sub-sessão.
-        Os comentários são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspector comments associated with a specific lashing material item within a given subsection of the inspection checklist.
+        Comments are returned ordered by subsection index and provide surveyor observations about the lashing/securing equipment.
       operationId: get_all_comments_from_lashing_subsection
       parameters:
         - in: path
           name: lashing_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the lashing material"
         - in: path
           name: sub_section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the subsection within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de comentários da lashing"
@@ -1521,8 +1539,8 @@ paths:
     post:
       tags:
         - Lashing Inspection
-      summary: Adicionar uma inspeção de lashing
-      description: Adiciona uma nova inspeção de lashing do tipo especificado.
+      summary: Create a new lashing inspection record
+      description: Creates a new lashing inspection record for the specified lashing type. This records the surveyor's inspection findings for lashing/securing equipment used on the vessel.
       operationId: add_lashing_inspection
       consumes:
         - application/json
@@ -1533,7 +1551,7 @@ paths:
           in: path
           required: true
           type: string
-          description: Tipo do lashing
+          description: Type of lashing equipment being inspected (e.g., strap, chain, wire)
       responses:
         201:
           description: Lashing inspection created successfully
@@ -1585,8 +1603,8 @@ paths:
     get:
       tags:
         - Lashing Inspection
-      summary: Obter uma inspeção de lashing
-      description: Retorna os dados da inspeção de lashing para um ID específico.
+      summary: Get a lashing inspection record
+      description: Retrieves the inspection data for a specific lashing material item, including surveyor findings and assessment results for the securing equipment.
       operationId: get_lashing_inspection
       produces:
         - application/json
@@ -1595,12 +1613,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do lashing
+          description: Unique identifier of the lashing material
         - name: lashing_type
           in: path
           required: true
           type: string
-          description: Tipo do lashing
+          description: Type of lashing equipment being inspected (e.g., strap, chain, wire)
       responses:
         200:
           description: Dados retornados com sucesso
@@ -1617,8 +1635,8 @@ paths:
     put:
       tags:
         - Lashing Inspection
-      summary: Atualizar uma inspeção de lashing
-      description: Atualiza os dados da inspeção de lashing para um ID específico.
+      summary: Update a lashing inspection record
+      description: Updates the inspection data for a specific lashing material item identified by its ID and type. This allows surveyors to revise their findings or assessment results for the securing equipment.
       operationId: update_lashing_inspection
       consumes:
         - application/json
@@ -1629,12 +1647,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do lashing
+          description: Unique identifier of the lashing material
         - name: lashing_type
           in: path
           required: true
           type: string
-          description: Tipo do lashing
+          description: Type of lashing equipment being inspected (e.g., strap, chain, wire)
       responses:
         200:
           description: Lashing inspection updated successfully
@@ -1653,8 +1671,8 @@ paths:
     delete:
       tags:
         - Lashing Inspection
-      summary: Deletar uma inspeção de lashing
-      description: Remove uma inspeção de lashing específica pelo ID.
+      summary: Delete a lashing inspection record
+      description: Permanently removes a specific lashing inspection record identified by its ID and type. This should be used when an inspection entry was created in error.
       operationId: delete_lashing_inspection
       produces:
         - application/json
@@ -1663,12 +1681,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do lashing
+          description: Unique identifier of the lashing material
         - name: lashing_type
           in: path
           required: true
           type: integer
-          description: ID do lashing
+          description: Type of lashing equipment being inspected
       responses:
         200:
           description: Lashing inspection deleted successfully
@@ -1725,8 +1743,8 @@ paths:
     post:
       tags:
         - Lifting Inspection
-      summary: Adicionar uma inspeção de lifting
-      description: Adiciona uma nova inspeção de lifting do tipo especificado.
+      summary: Create a new lifting inspection record
+      description: Creates a new lifting inspection record for the specified lifting equipment type. This records the surveyor's inspection findings for lifting equipment such as cranes, slings, or shackles used on the vessel.
       operationId: add_lifting_inspection
       consumes:
         - application/json
@@ -1737,7 +1755,7 @@ paths:
           in: path
           required: true
           type: string
-          description: Tipo do lifting
+          description: Type of lifting equipment being inspected (e.g., crane, sling, shackle)
       responses:
         201:
           description: Lifting inspection created successfully
@@ -1789,8 +1807,8 @@ paths:
     get:
       tags:
         - Lifting Inspection
-      summary: Obter uma inspeção de lifting
-      description: Retorna os dados da inspeção de lifting para um ID específico.
+      summary: Get a lifting inspection record
+      description: Retrieves the inspection data for a specific lifting equipment item, including surveyor findings and assessment results such as SWL capacity, condition, and certification status.
       operationId: get_lifting_inspection
       produces:
         - application/json
@@ -1799,12 +1817,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do lifting
+          description: Unique identifier of the lifting material
         - name: lifting_type
           in: path
           required: true
           type: string
-          description: Tipo do lifting
+          description: Type of lifting equipment being inspected (e.g., crane, sling, shackle)
       responses:
         200:
           description: Dados retornados com sucesso
@@ -1821,8 +1839,8 @@ paths:
     put:
       tags:
         - Lifting Inspection
-      summary: Atualizar uma inspeção de lifting
-      description: Atualiza os dados da inspeção de lifting para um ID específico.
+      summary: Update a lifting inspection record
+      description: Updates the inspection data for a specific lifting equipment item identified by its ID and type. Allows surveyors to revise their findings, update SWL values, or modify condition assessments for the lifting equipment.
       operationId: update_lifting_inspection
       consumes:
         - application/json
@@ -1833,12 +1851,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do lifting
+          description: Unique identifier of the lifting material
         - name: lifting_type
           in: path
           required: true
           type: string
-          description: Tipo do lifting
+          description: Type of lifting equipment being inspected (e.g., crane, sling, shackle)
       responses:
         200:
           description: Lifting inspection updated successfully
@@ -1857,8 +1875,8 @@ paths:
     delete:
       tags:
         - Lifting Inspection
-      summary: Deletar uma inspeção de lifting
-      description: Remove uma inspeção de lifting específica pelo ID.
+      summary: Delete a lifting inspection record
+      description: Permanently removes a specific lifting inspection record identified by its ID and type. This should be used when an inspection entry was created in error.
       operationId: delete_lifting_inspection
       produces:
         - application/json
@@ -1867,12 +1885,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do lifting
+          description: Unique identifier of the lifting material
         - name: lifting_type
           in: path
           required: true
           type: integer
-          description: ID do lifting
+          description: Type of lifting equipment being inspected
       responses:
         200:
           description: Lifting inspection deleted successfully
@@ -1968,27 +1986,27 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todos os comentários de uma carga e sub-sessão específica
+      summary: Get all comments for a cargo item in a specific subsection
       description: |
-        Recupera todos os comentários associadas a uma carga específica em uma sub-sessão.
-        Os comentários são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspector comments associated with a specific cargo item within a given subsection of the inspection checklist.
+        Comments are returned ordered by subsection index and provide surveyor observations about the cargo condition and handling.
       operationId: get_all_comments_from_cargo_subsection
       parameters:
         - in: path
           name: cargo_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the cargo item"
         - in: path
           name: sub_section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the subsection within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de comentários da carga"
@@ -2102,32 +2120,32 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todos os comentários de uma tarefa e sessão específica
+      summary: Get all comments for a specific task, section, and subsection
       description: |
-        Recupera todos os comentários associadas a uma tarefa específica em uma sessão.
-        Os comentários são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspector comments associated with a specific boarding survey task within a given section and subsection of the inspection checklist.
+        Comments are returned ordered by index and provide surveyor observations recorded during the granular inspection step.
       operationId: get_comments_from_task_sub_section
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the survey task"
         - in: path
           name: section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the section within the inspection checklist"
         - in: path
           name: subsection_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the subsection within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de comentários da tarefa"
@@ -2240,32 +2258,32 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todas as fotos de uma tarefa e sessão específica
+      summary: Get all photos for a specific task, section, and subsection
       description: |
-        Recupera todas as fotos associadas a uma tarefa específica em uma sessão.
-        As fotos são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspection photos associated with a specific boarding survey task within a given section and subsection of the inspection checklist.
+        Photos are returned ordered by index and represent visual evidence captured by the surveyor during the inspection.
       operationId: get_all_photos_from_task_sub_section
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the survey task"
         - in: path
           name: section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the section within the inspection checklist"
         - in: path
           name: subsection_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the subsection within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de fotos da tarefa"
@@ -2360,21 +2378,21 @@ paths:
     get:
       tags:
         - Tarefas
-      summary: Obter todas as tarefas de uma demanda
+      summary: Get all survey tasks for a demand
       description: |
-        Recupera todas as tarefas
+        Retrieves all survey tasks (tarefas) associated with a specific survey demand. Each task represents a specific activity or step assigned to a surveyor as part of the overall survey job order.
       operationId: get_tarefas_demanda
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: path
           name: id_demanda
           required: true
           type: integer
-          description: "ID da demanda"
+          description: "Unique identifier of the survey demand"
       responses:
         "200":
           description: "Lista de demandas atribuídas ao vistoriador"
@@ -2464,21 +2482,21 @@ paths:
     post:
       tags:
         - Notifications Customer
-      summary: Criar uma nova notificação
+      summary: Create a new customer notification
       description: |
-        Cria uma nova notificação para um usuário customer específico.
-        Utilizado para alertar customers sobre tarefas, atualizações ou outras informações importantes.
+        Creates a new notification for a specific customer user.
+        Used to alert customers about survey task updates, status changes, or other relevant information about their ongoing surveys.
       operationId: create_notification_customer
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "notification"
           required: true
-          description: "Dados da notificação"
+          description: "Notification payload"
           schema:
             type: object
             required:
@@ -2489,19 +2507,19 @@ paths:
             properties:
               id_task:
                 type: integer
-                description: "ID da vistoria associada"
+                description: "Unique identifier of the associated survey task"
                 example: 42
               id_customer:
                 type: integer
-                description: "ID do usuário destinatário"
+                description: "Unique identifier of the recipient customer user"
                 example: 15
               message:
                 type: string
-                description: "Conteúdo da notificação"
+                description: "Body text of the notification"
                 example: "Nova tarefa atribuída à vistoria #42"
               title:
                 type: string
-                description: "Título da notificação"
+                description: "Title/subject of the notification"
                 example: "Nova tarefa atribuída à vistoria #42"
       responses:
         "201":
@@ -2583,22 +2601,22 @@ paths:
     delete:
       tags:
         - Notifications Customer
-      summary: Excluir uma notificação
+      summary: Delete a customer notification
       description: |
-        Remove permanentemente uma notificação do sistema.
-        Útil para limpar notificações antigas ou irrelevantes.
+        Permanently removes a specific customer notification from the system by its ID.
+        Used to clean up read or outdated notifications for customer users.
       operationId: delete_notification_customer
       parameters:
         - in: path
           name: notification_id
           required: true
           type: integer
-          description: "ID da notificação a ser excluída"
+          description: "Unique identifier of the notification to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Notificação excluída com sucesso"
@@ -2671,17 +2689,17 @@ paths:
     get:
       tags:
         - Notifications Customer
-      summary: Obter todas as notificações de um customer
+      summary: Get all notifications for a customer user
       description: |
-        Recupera todas as notificações enviadas a um customer específico.
-        As notificações são ordenadas por data de criação (mais recentes primeiro).
+        Retrieves all notifications sent to a specific customer user, ordered by creation date with most recent first.
+        Used by the customer-facing application to display survey status updates and alerts.
       operationId: get_customer_notifications
       parameters:
         - in: path
           name: user_id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the customer user"
         - in: "header"
           name: "x-api-key"
           required: true
@@ -2771,16 +2789,16 @@ paths:
     get:
       tags:
         - Users Customer
-      summary: Listar todos os usuários vistoriadores
+      summary: List all customer users
       description: |
-        Recupera uma lista completa de todos os usuários customer cadastrados no sistema.
+        Retrieves a complete list of all customer users registered in the system. Used for administrative management and user lookups.
       operationId: list_users_customer
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de usuários vistoriadores"
@@ -2815,23 +2833,23 @@ paths:
     post:
       tags:
         - Users Customer
-      summary: Criar um novo usuário customer
+      summary: Create a new customer user
       description: |
-        Registra um novo usuário customer no sistema.
-        Requer email e senha, gerando automaticamente um hash seguro para armazenamento para a senha.
-        Nome de usuário é buscado automaticamente na tabela de funcionários da MSE (tbl_employees). 
-        Apenas funcionários previamente registrados podem se cadastrar.
+        Registers a new customer user account in the system.
+        Requires an email and password; a secure password hash is generated automatically for storage.
+        The user's display name is automatically retrieved from the MSE employees table (tbl_employees).
+        Only employees previously registered in the MSE system may create an account.
       operationId: create_user_customer
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "user"
           required: true
-          description: "Dados do usuário a ser criado"
+          description: "New customer user data"
           schema:
             type: object
             required:
@@ -2840,11 +2858,11 @@ paths:
             properties:
               email:
                 type: string
-                description: "Email do usuário (único no sistema)"
+                description: "Email address of the user (must be unique in the system)"
                 example: "joao.silva@example.com"
               password:
                 type: string
-                description: "Senha do usuário"
+                description: "Account password (will be securely hashed before storage)"
                 example: "senha123"
       responses:
         "201":
@@ -2925,22 +2943,22 @@ paths:
     get:
       tags:
         - Users Customer
-      summary: Obter um usuário surveyor específico
+      summary: Get a specific customer user by ID
       description: |
-        Recupera informações detalhadas sobre um usuário surveyor específico pelo seu ID.
-        Útil para visualizar perfis de usuário e gerenciar contas individuais.
+        Retrieves detailed profile information for a specific customer user identified by their numeric ID.
+        Useful for viewing customer account details and managing individual customer profiles.
       operationId: get_user_customer
       parameters:
         - in: path
           name: id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the customer user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do usuário vistoriador"
@@ -2982,32 +3000,32 @@ paths:
     put:
       tags:
         - Users Customer
-      summary: Atualizar um usuário customer
+      summary: Update a customer user
       description: |
-        Atualiza as informações de um usuário customer existente.
-        Permite diretamente a senha, e indiretamente o nome do usuário (quando essa função é chamada, o sistema procura na tabela tbl_employees se o funcionário teve seu nome trocado, e faz a atualização).
+        Updates the information of an existing customer user account.
+        The password can be updated directly. The display name is updated indirectly — when this endpoint is called, the system checks the MSE employees table (tbl_employees) for any name changes and applies them automatically.
       operationId: update_customer_user
       parameters:
         - in: path
           name: id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the customer user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "user"
           required: true
-          description: "Dados do usuário a serem atualizados"
+          description: "Customer user fields to update"
           schema:
             type: object
             properties:
               password:
                 type: string
-                description: "Nova senha do usuário"
+                description: "New account password (will be securely hashed before storage)"
                 example: "novaSenha123"
       responses:
         "200":
@@ -3055,22 +3073,21 @@ paths:
     delete:
       tags:
         - Users Customer
-      summary: Excluir um usuário customer
+      summary: Delete a customer user account
       description: |
-        Remove permanentemente um usuário customer do sistema.
-        Esta operação não pode ser desfeita.
+        Permanently removes a customer user account from the system. This operation cannot be undone.
       operationId: delete_user_customer
       parameters:
         - in: path
           name: id
           required: true
           type: integer
-          description: "ID do usuário a ser excluído"
+          description: "Unique identifier of the customer user to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Usuário excluído com sucesso"
@@ -3137,20 +3154,20 @@ paths:
     post:
       tags:
         - Users Customer
-      summary: Autenticar um usuário customer
+      summary: Authenticate a customer user
       description: |
-        Autentica um usuário customer usando email e senha.
+        Authenticates a customer user using their email and password credentials and returns authorization confirmation on success.
       operationId: login_user_customer
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "credentials"
           required: true
-          description: "Credenciais do usuário"
+          description: "Customer user login credentials"
           schema:
             type: object
             required:
@@ -3159,11 +3176,11 @@ paths:
             properties:
               email:
                 type: string
-                description: "Email do usuário"
+                description: "Email address of the customer user"
                 example: "joao.silva@example.com"
               password:
                 type: string
-                description: "Senha do usuário"
+                description: "Account password"
                 example: "senha123"
       responses:
         "200":
@@ -3255,17 +3272,17 @@ paths:
     get:
       tags:
         - Demandas
-      summary: Obter todas as demandas atribuídas a um vistoriador específico
+      summary: Get all survey demands assigned to a specific customer
       description: |
-        Recupera todas as demandas atribuídas a um surveyor específico, identificado pelo seu ID.
+        Retrieves all survey demands assigned to a specific customer user, identified by their customer ID.
 
-        Suporta dois filtros opcionais:
-        - **status**: pode receber múltiplos valores separados por vírgula (por exemplo, `status=Pending,Active`), que serão usados para filtrar as demandas pelo campo **survey_status**.
-        - **forToday**: se definido como **true**, retorna apenas as demandas cuja data de entrega (`dt_entrega`) é igual à data atual.
+        Supports two optional filters:
+        - **status**: accepts multiple comma-separated values (e.g., `status=Pending,Active`) to filter demands by their **survey_status** field.
+        - **forToday**: if set to **true**, returns only demands whose delivery date (`dt_entrega`) matches today's date.
 
-        Cada demanda retornada inclui informações do cliente, da embarcação associada, status da vistoria e número de tarefas vinculadas.
+        Each returned demand includes client information, associated vessel details, survey status, and the count of linked tasks.
 
-        Em caso de erro de validação (por exemplo, status inválido), uma resposta 400 será retornada com os detalhes.
+        A 400 response is returned if an invalid status value is provided.
 
       operationId: get_demandas_by_customer
       parameters:
@@ -3273,17 +3290,17 @@ paths:
           name: customer_id
           required: true
           type: integer
-          description: "ID do usuário de cliente"
+          description: "Unique identifier of the customer user"
         - in: query
           name: status
           required: false
           type: string
-          description: "Filtro opcional de status. Permite múltiplos valores separados por vírgula (ex: Awaiting to Start,Pending,Active)"
+          description: "Optional status filter. Accepts multiple comma-separated values (e.g., Awaiting to Start,Pending,Active)"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de demandas atribuídas ao vistoriador"
@@ -3377,8 +3394,8 @@ paths:
     post:
       tags:
         - Checklist
-      summary: Adicionar preliminary checklist
-      description: Adiciona uma nova entrada de preliminary checklist vinculada a um survey existente.
+      summary: Create a new survey checklist
+      description: Creates a new preliminary survey checklist entry linked to an existing survey. The checklist is used by surveyors to systematically record inspection findings across all required survey items.
       operationId: add_checklist
       consumes:
         - application/json
@@ -3389,7 +3406,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do survey
+          description: Unique identifier of the survey
       responses:
         201:
           description: Preliminary checklist criado com sucesso
@@ -3433,8 +3450,8 @@ paths:
     get:
       tags:
         - Checklist
-      summary: Obter preliminary checklist
-      description: Retorna os dados do preliminary checklist com base no ID do survey.
+      summary: Get survey checklist
+      description: Retrieves the preliminary survey checklist data for the given survey ID, including all recorded inspection items and their status.
       operationId: get_checklist
       produces:
         - application/json
@@ -3443,7 +3460,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do survey
+          description: Unique identifier of the survey
       responses:
         200:
           description: Dados retornados com sucesso
@@ -3458,8 +3475,8 @@ paths:
     put:
       tags:
         - Checklist
-      summary: Atualizar preliminary checklist
-      description: Atualiza campos do preliminary checklist baseado no ID do survey.
+      summary: Update survey checklist
+      description: Updates the fields of a preliminary survey checklist based on the survey ID. Allows surveyors to revise their recorded inspection items and findings.
       operationId: update_checklist
       consumes:
         - application/json
@@ -3470,7 +3487,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do survey
+          description: Unique identifier of the survey
       responses:
         200:
           description: Preliminary checklist atualizado com sucesso
@@ -3553,16 +3570,17 @@ paths:
     get:
       tags:
         - Offline Provider
-      summary: Obter todos os dados do banco
+      summary: Download all data for offline use
       description: |
-        Obter todos os dados do banco relacionado à um usuário autenticado
+        Downloads all database records related to the authenticated surveyor user in a portable database file (.db format).
+        This endpoint is used by the mobile application to sync data for offline operation in areas with limited connectivity.
       operationId: get_offline_data
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Arquivo de banco de dados atualizado (.db)"
@@ -3625,16 +3643,17 @@ paths:
     post:
       tags:
         - Offline Provider
-      summary: Exportar todos os dados locais
+      summary: Upload locally collected offline data
       description: |
-        Exportar todos os dados locais relacionado à um usuário autenticado
+        Exports all locally collected data from the mobile application back to the central server for an authenticated surveyor user.
+        Used to sync offline-collected survey data to the central database once connectivity is restored. Returns a payload with the status of each uploaded operation.
       operationId: export_data
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Payload com status de todas as operações."
@@ -3665,21 +3684,22 @@ paths:
     get:
       tags:
         - Offline Provider
-      summary: Importar todos os dados online para ambiente local
+      summary: Download data for a specific user for offline use
       description: |
-        Importar todos os dados online relacionado à um usuário autenticado para ambiente local 
+        Downloads all online data associated with a specific authenticated surveyor user into a local database file for offline access.
+        Used by the mobile application to prepare for working in areas without internet connectivity.
       operationId: import_data
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - name: user_id
           in: path
           required: true
           type: integer
-          description: ID do usuário
+          description: Unique identifier of the surveyor user
       responses:
         "200":
           description: "Arquivo de banco de dados atualizado (.db)"
@@ -3781,26 +3801,26 @@ paths:
     get:
       tags:
         - Tarefas
-      summary: Obter todas as tarefas
+      summary: Get all survey tasks within a date range
       description: |
-        Recupera todas as tarefas
+        Retrieves all survey tasks (tarefas) falling within the specified date range. Useful for generating reports and reviewing the workload across a given period.
       operationId: get_tarefas_date
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: query
           name: data_inicial
           required: true
           type: string
-          description: Data de início do período selecionado
+          description: Start date of the query period (ISO 8601 format, e.g., 2025-01-01)
         - in: query
           name: data_final
           required: true
           type: string
-          description: Data de final do período selecionado
+          description: End date of the query period (ISO 8601 format, e.g., 2025-12-31)
       responses:
         "200":
           description: "Lista de demandas atribuídas ao vistoriador"
@@ -4038,26 +4058,26 @@ paths:
     get:
       tags:
         - Demandas
-      summary: Obter todas as demandas
+      summary: Get all survey demands within a date range
       description: |
-        Recupera todas as demandas
+        Retrieves all survey demands (demandas) falling within the specified date range. Each demand includes full details about the client, vessel, assigned surveyor, survey status, and financial estimates.
       operationId: get_demandas_date
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: query
           name: data_inicial
           required: true
           type: string
-          description: Data de início do período selecionado
+          description: Start date of the query period (ISO 8601 format, e.g., 2025-01-01)
         - in: query
           name: data_final
           required: true
           type: string
-          description: Data de final do período selecionado
+          description: End date of the query period (ISO 8601 format, e.g., 2025-12-31)
       responses:
         "200":
           description: "Lista de demandas atribuídas ao vistoriador"
@@ -4206,6 +4226,7 @@ paths:
       tags:
         - Lifting Material
       summary: Add new lifting material
+      description: Creates a new lifting material record for use in a survey task. Lifting materials include cranes, slings, shackles, and other hoisting equipment used during vessel cargo operations.
       operationId: addliftingMaterial
       consumes:
         - application/json
@@ -4214,7 +4235,7 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         201:
           description: Created
@@ -4259,12 +4280,14 @@ paths:
       tags:
         - Lifting Material
       summary: Get a specific lifting material
+      description: Retrieves the details of a specific lifting material record, including its type, specifications, and SWL (Safe Working Load) capacity.
       operationId: getliftingMaterial
       parameters:
         - name: id_lifting_material
           in: path
           required: true
           type: integer
+          description: Unique identifier of the lifting material
       responses:
         200:
           description: OK
@@ -4280,6 +4303,7 @@ paths:
       tags:
         - Lifting Material
       summary: Update a lifting material
+      description: Updates the details of a specific lifting material record, such as its type, SWL rating, or certification status.
       operationId: updateliftingMaterial
       consumes:
         - application/json
@@ -4288,6 +4312,7 @@ paths:
           in: path
           required: true
           type: integer
+          description: Unique identifier of the lifting material
       responses:
         200:
           description: Updated
@@ -4306,19 +4331,20 @@ paths:
     delete:
       tags:
         - Lifting Material
-      summary: Excluir um lifting material
+      summary: Delete a lifting material
+      description: Permanently removes a specific lifting material record from the system. This will also remove any associated inspection data.
       operationId: delete_lifting_material
       parameters:
         - in: path
           name: id_lifting_material
           required: true
           type: integer
-          description: "ID do lifting material a ser excluído"
+          description: "Unique identifier of the lifting material to be deleted"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "lifting material excluído com sucesso"
@@ -4386,18 +4412,20 @@ paths:
     get:
       tags:
         - Lifting Material
-      summary: Get all lifting materials for a task
+      summary: Get all lifting materials for a survey task
+      description: Retrieves all lifting material records associated with a specific survey task. Optionally filters by cargo item to show only the lifting equipment related to a specific cargo.
       operationId: getAllliftingMaterials
       parameters:
         - name: id_task
           in: path
           required: true
           type: integer
+          description: Unique identifier of the survey task
         - in: query
           name: id_cargo
           required: false
           type: integer
-          description: Data de início do período selecionado
+          description: Optional filter by cargo item identifier
       responses:
         200:
           description: OK
@@ -4442,8 +4470,8 @@ paths:
     post:
       tags:
         - Lifting Operation
-      summary: Adicionar uma operação de lifting
-      description: Adiciona uma nova operação de lifting.
+      summary: Create a new lifting operation record
+      description: Creates a new lifting operation record associated with a cargo item. A lifting operation documents the planned or executed hoisting activity, including equipment used and load specifications.
       operationId: add_lifting_operation
       consumes:
         - application/json
@@ -4504,8 +4532,8 @@ paths:
     get:
       tags:
         - Lifting Operation
-      summary: Obter uma operação de lifting
-      description: Retorna os dados da operação de lifting para um ID específico.
+      summary: Get a lifting operation record by cargo ID
+      description: Retrieves the lifting operation data associated with a specific cargo item, including equipment used, load details, and operation parameters.
       operationId: get_lifting_operation
       produces:
         - application/json
@@ -4514,7 +4542,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: Dados retornados com sucesso
@@ -4531,8 +4559,8 @@ paths:
     put:
       tags:
         - Lifting Operation
-      summary: Atualizar uma operação de lifting
-      description: Atualiza os dados da operação de lifting para um ID específico.
+      summary: Update a lifting operation record
+      description: Updates the lifting operation data associated with a specific cargo item. Allows surveyors to modify operational parameters, equipment details, or load specifications.
       operationId: update_lifting_operation
       consumes:
         - application/json
@@ -4543,7 +4571,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: Lifting operation updated successfully
@@ -4597,8 +4625,8 @@ paths:
     post:
       tags:
         - Cargo Storage
-      summary: Adicionar uma avaliação de storage da carga
-      description: Adiciona uma nova avaliação de storage da carga.
+      summary: Create a new cargo storage assessment
+      description: Creates a new cargo storage condition assessment record. This documents the surveyor's evaluation of how the cargo is stored on the vessel, including stowage arrangement, protection, and compliance with safety standards.
       operationId: add_cargo_storage
       consumes:
         - application/json
@@ -4609,7 +4637,7 @@ paths:
           in: path
           required: true
           type: string
-          description: Tipo da carga
+          description: Type of cargo being assessed
       responses:
         201:
           description: Cargo storage created successfully
@@ -4661,8 +4689,8 @@ paths:
     get:
       tags:
         - Cargo Storage
-      summary: Obter storage de carga
-      description: Retorna os dados storage de carga para um ID específico.
+      summary: Get cargo storage assessment
+      description: Retrieves the cargo storage assessment data for a specific cargo item, including the surveyor's evaluation of stowage arrangements and storage conditions.
       operationId: get_cargo_storage
       produces:
         - application/json
@@ -4671,7 +4699,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: Dados retornados com sucesso
@@ -4688,8 +4716,8 @@ paths:
     put:
       tags:
         - Cargo Storage
-      summary: Atualizar uma storage de carga
-      description: Atualiza os dados storage de carga para um ID específico.
+      summary: Update cargo storage assessment
+      description: Updates the cargo storage assessment data for a specific cargo item. Allows surveyors to revise their stowage evaluation findings.
       operationId: update_cargo_storage
       consumes:
         - application/json
@@ -4700,7 +4728,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: Cargo storage updated successfully
@@ -4755,6 +4783,7 @@ paths:
       tags:
         - Lashing Material
       summary: Add new lashing material
+      description: Creates a new lashing material record for use in a survey task. Lashing materials include straps, chains, wire ropes, and other equipment used to secure cargo during vessel transport.
       operationId: addLashingMaterial
       consumes:
         - application/json
@@ -4763,7 +4792,7 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         201:
           description: Created
@@ -4808,13 +4837,14 @@ paths:
       tags:
         - Lashing Material
       summary: Get a specific lashing material
+      description: Retrieves the details of a specific lashing material record, including its type, specifications, and condition assessment.
       operationId: getLashingMaterial
       parameters:
         - in: path
           name: id_lashing_material
           required: true
           type: integer
-          description: "ID do lashing material a ser pego os dados"
+          description: "Unique identifier of the lashing material"
       responses:
         200:
           description: OK
@@ -4830,6 +4860,7 @@ paths:
       tags:
         - Lashing Material
       summary: Update a lashing material
+      description: Updates the details of a specific lashing material record, such as its type, quantity, condition, or certification status.
       operationId: updateLashingMaterial
       consumes:
         - application/json
@@ -4838,6 +4869,7 @@ paths:
           name: id_lashing_material
           required: true
           type: integer
+          description: Unique identifier of the lashing material
       responses:
         200:
           description: Updated
@@ -4856,19 +4888,20 @@ paths:
     delete:
       tags:
         - Lashing Material
-      summary: Excluir um lashing material
+      summary: Delete a lashing material
+      description: Permanently removes a specific lashing material record from the system. This will also remove any associated inspection data.
       operationId: delete_lashing_material
       parameters:
         - in: path
           name: id_lashing_material
           required: true
           type: integer
-          description: "ID do lashing material a ser excluído"
+          description: "Unique identifier of the lashing material to be deleted"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lashing material excluído com sucesso"
@@ -4937,18 +4970,20 @@ paths:
     get:
       tags:
         - Lashing Material
-      summary: Get all lashing materials for a task
+      summary: Get all lashing materials for a survey task
+      description: Retrieves all lashing material records associated with a specific survey task. Optionally filters by cargo item to show only the securing equipment related to a specific cargo.
       operationId: getAllLashingMaterials
       parameters:
         - in: path
           name: id_task
           required: true
           type: integer
+          description: Unique identifier of the survey task
         - in: query
           name: id_cargo
           required: false
           type: integer
-          description: Data de início do período selecionado
+          description: Optional filter by cargo item identifier
       responses:
         200:
           description: OK
@@ -4993,8 +5028,8 @@ paths:
     post:
       tags:
         - Lashing Cargo
-      summary: Adicionar lashing cargo
-      description: Adiciona uma nova entrada de lashing cargo vinculada a um cargo existente.
+      summary: Create a new lashing cargo record
+      description: Creates a new lashing cargo entry linked to an existing cargo item. This associates lashing/securing configuration details directly with the cargo being inspected.
       operationId: add_lashing_cargo
       consumes:
         - application/json
@@ -5005,7 +5040,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do cargo
+          description: Unique identifier of the cargo item
       responses:
         201:
           description: Lashing cargo criado com sucesso
@@ -5049,8 +5084,8 @@ paths:
     get:
       tags:
         - Lashing Cargo
-      summary: Obter lashing cargo
-      description: Retorna os dados do lashing cargo com base no ID do cargo.
+      summary: Get lashing cargo record
+      description: Retrieves the lashing cargo record associated with a specific cargo item, including the securing configuration and equipment details applied to that cargo.
       operationId: get_lashing_cargo
       produces:
         - application/json
@@ -5059,7 +5094,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do cargo
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: Dados retornados com sucesso
@@ -5074,8 +5109,8 @@ paths:
     put:
       tags:
         - Lashing Cargo
-      summary: Atualizar lashing cargo
-      description: Atualiza campos do lashing cargo baseado no ID do cargo.
+      summary: Update lashing cargo record
+      description: Updates the lashing cargo record associated with a specific cargo item. Allows surveyors to modify the securing configuration and equipment details applied to the cargo.
       operationId: update_lashing_cargo
       consumes:
         - application/json
@@ -5086,7 +5121,7 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID do cargo
+          description: Unique identifier of the cargo item
       responses:
         200:
           description: Lashing cargo atualizado com sucesso
@@ -5136,8 +5171,8 @@ paths:
     post:
       tags:
         - Cargo Inspection
-      summary: Adicionar uma inspeção de carga
-      description: Adiciona uma nova inspeção de carga do tipo especificado.
+      summary: Create a new cargo inspection record
+      description: Creates a new cargo inspection record for the specified cargo type. This documents the surveyor's detailed examination findings of the cargo item, including condition, dimensions, markings, and compliance with safety requirements.
       operationId: add_cargo_inspection
       consumes:
         - application/json
@@ -5148,7 +5183,7 @@ paths:
           in: path
           required: true
           type: string
-          description: Tipo da carga
+          description: Type of cargo being inspected
       responses:
         201:
           description: Cargo inspection created successfully
@@ -5200,8 +5235,8 @@ paths:
     get:
       tags:
         - Cargo Inspection
-      summary: Obter uma inspeção de carga
-      description: Retorna os dados da inspeção de carga para um ID específico.
+      summary: Get a cargo inspection record
+      description: Retrieves the inspection data for a specific cargo item, including surveyor findings, condition assessment, and compliance status.
       operationId: get_cargo_inspection
       produces:
         - application/json
@@ -5210,12 +5245,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Unique identifier of the cargo item
         - name: cargo_type
           in: path
           required: true
           type: string
-          description: Tipo da carga
+          description: Type of cargo being inspected
       responses:
         200:
           description: Dados retornados com sucesso
@@ -5232,8 +5267,8 @@ paths:
     put:
       tags:
         - Cargo Inspection
-      summary: Atualizar uma inspeção de carga
-      description: Atualiza os dados da inspeção de carga para um ID específico.
+      summary: Update a cargo inspection record
+      description: Updates the inspection data for a specific cargo item. Allows surveyors to revise their findings and condition assessments.
       operationId: update_cargo_inspection
       consumes:
         - application/json
@@ -5244,12 +5279,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Unique identifier of the cargo item
         - name: cargo_type
           in: path
           required: true
           type: string
-          description: Tipo da carga
+          description: Type of cargo being inspected
       responses:
         200:
           description: Cargo inspection updated successfully
@@ -5268,8 +5303,8 @@ paths:
     delete:
       tags:
         - Cargo Inspection
-      summary: Deletar uma inspeção de carga
-      description: Remove uma inspeção de carga específica pelo ID.
+      summary: Delete a cargo inspection record
+      description: Permanently removes a specific cargo inspection record identified by its ID and cargo type. This should be used when an inspection entry was created in error.
       operationId: delete_cargo_inspection
       produces:
         - application/json
@@ -5278,12 +5313,12 @@ paths:
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Unique identifier of the cargo item
         - name: cargo_type
           in: path
           required: true
           type: integer
-          description: ID da carga
+          description: Type of cargo being inspected
       responses:
         200:
           description: Cargo inspection deleted successfully
@@ -5370,21 +5405,21 @@ paths:
     get:
       tags:
         - Cargo Condition
-      summary: Obter condição de cargo por ID
+      summary: Get cargo condition by cargo ID
       description: |
-        Retorna as informações da condição de cargo vinculada a um cargo específico.
+        Retrieves the condition assessment information associated with a specific cargo item, including physical condition details such as external state, packing integrity, stability, and markings.
       operationId: get_cargo_condition
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: path
           name: cargo_id
           required: true
           type: integer
-          description: ID da condição de cargo
+          description: Unique identifier of the cargo item
       produces:
         - application/json
       responses:
@@ -5418,21 +5453,21 @@ paths:
     put:
       tags:
         - Cargo Condition
-      summary: Atualizar condição de cargo
+      summary: Update cargo condition
       description: |
-        Atualiza os dados de uma condição de cargo específica. Permite atualização parcial dos campos.
+        Updates the condition assessment data for a specific cargo item. Supports partial updates — only the provided fields will be modified. Used by surveyors to record physical condition observations of the cargo.
       operationId: update_cargo_condition
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: path
           name: cargo_id
           required: true
           type: integer
-          description: ID da condição de cargo
+          description: Unique identifier of the cargo item
         - in: body
           name: body
           required: true
@@ -5561,16 +5596,16 @@ paths:
     post:
       tags:
         - Cargo Condition
-      summary: Adicionar nova condição de cargo
+      summary: Create a new cargo condition record
       description: |
-        Cria uma nova condição de cargo. O nome deve ser único.
+        Creates a new cargo condition assessment record. The cargo name must be unique. Used to initialize the condition tracking for a newly added cargo item being surveyed.
       operationId: add_cargo_condition
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: body
           name: body
           required: true
@@ -5655,22 +5690,22 @@ paths:
     put:
       tags:
         - Cargo
-      summary: Atualizar um cargo específico
+      summary: Update a specific cargo item
       description: |
-        Atualiza os dados de um cargo específico, identificando-o pelo ID.
-        Permite atualização parcial dos seguintes campos: cargo_name, cargo_type, weight, length, width, height, extra_info.
+        Updates the data of a specific cargo item identified by its ID.
+        Supports partial updates of the following fields: cargo_name, cargo_type, weight, length, width, height, extra_info.
       operationId: update_cargo
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: path
           name: cargo_id
           required: true
           type: integer
-          description: ID do cargo a ser atualizado
+          description: Unique identifier of the cargo item to be updated
         - in: body
           name: body
           required: true
@@ -5749,20 +5784,20 @@ paths:
     delete:
       tags:
         - Cargo
-      summary: Deletar um cargo específico
-      description: Remove um cargo específico da base de dados, identificado pelo ID.
+      summary: Delete a specific cargo item
+      description: Permanently removes a specific cargo item from the database, identified by its ID. This will also remove associated inspection, condition, lashing, and lifting records.
       operationId: delete_cargo
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: path
           name: cargo_id
           required: true
           type: integer
-          description: ID do cargo a ser deletado
+          description: Unique identifier of the cargo item to be deleted
       produces:
         - application/json
       responses:
@@ -5830,21 +5865,21 @@ paths:
     get:
       tags:
         - Cargo
-      summary: Obter cargos vinculados a uma task
+      summary: Get all cargo items linked to a survey task
       description: |
-        Retorna todos os cargos vinculados a uma task específica.
+        Retrieves all cargo items associated with a specific survey task. Each cargo item represents a piece of equipment or freight being inspected as part of the survey.
       operationId: get_cargo
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: path
           name: id_task
           required: true
           type: integer
-          description: ID da task vinculada ao cargo
+          description: Unique identifier of the survey task
       produces:
         - application/json
       responses:
@@ -5906,16 +5941,16 @@ paths:
     post:
       tags:
         - Cargo
-      summary: Adicionar novo cargo
+      summary: Create a new cargo item
       description: |
-        Cria um novo cargo com nome e id de task relacionado.
+        Creates a new cargo item record linked to a survey task. The cargo item represents a specific piece of equipment or freight to be inspected during the vessel survey.
       operationId: add_cargo
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
         - in: body
           name: body
           required: true
@@ -5990,16 +6025,16 @@ paths:
     get:
       tags:
         - AI PDF Generation
-      summary: Geração de PDF com seções específicas
+      summary: Generate a survey report PDF with specific sections
       description: |
-        Gera um PDF contendo uma única seção personalizada.
+        Generates a survey report PDF containing a specific customized section. Used to produce partial or sectional PDF outputs for review or inclusion in the final survey report.
       operationId: generate_pdf_sections
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
       produces:
         - application/pdf
       responses:
@@ -6053,16 +6088,16 @@ paths:
     post:
       tags:
         - AI PDF Generation
-      summary: Geração de PDF a partir de dados estruturados
+      summary: Generate a survey report PDF from structured data
       description: |
-        Gera um PDF com capa e conteúdo dinâmico com base nos dados enviados em JSON.
+        Generates a complete survey report PDF with cover page and dynamic content based on structured JSON survey data. The AI processes the data to produce a professionally formatted document.
       operationId: generate_pdf_from_data
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
       produces:
         - application/pdf
       responses:
@@ -6113,16 +6148,16 @@ paths:
     get:
       tags:
         - AI PDF Generation
-      summary: Geração de PDF padrão
+      summary: Generate a standard survey PDF
       description: |
-        Gera um PDF padrão com uma capa e uma página de conteúdo fixa.
+        Generates a standard survey report PDF with a cover page and fixed content layout. Used for testing the PDF generation pipeline or generating a baseline survey report template.
       operationId: generate_pdf_only
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
       produces:
         - application/pdf
       responses:
@@ -6174,16 +6209,16 @@ paths:
     post:
       tags:
         - AI PDF Generation
-      summary: Geração de HTML com inteligência artificial
+      summary: Generate survey report HTML using AI
       description: |
-        Gera um documento HTML minificado a partir de dados enviados em JSON.
+        Uses AI to generate a minified HTML document from structured survey JSON data. The resulting HTML can be used as an intermediate step in the survey report generation pipeline or for preview purposes.
       operationId: generate_ai_html
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: API key for authentication
       responses:
         200:
           description: HTML gerado com sucesso
@@ -6242,16 +6277,16 @@ paths:
     get:
       tags:
         - Users Surveyor
-      summary: Listar todos os usuários vistoriadores
+      summary: List all surveyor users
       description: |
-        Recupera uma lista completa de todos os usuários surveyors cadastrados no sistema.
+        Retrieves a complete list of all surveyor users registered in the system, including their display names and email addresses.
       operationId: list_users
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de usuários vistoriadores"
@@ -6290,23 +6325,23 @@ paths:
     post:
       tags:
         - Users Surveyor
-      summary: Criar um novo usuário surveyor
+      summary: Create a new surveyor user
       description: |
-        Registra um novo usuário surveyor no sistema.
-        Requer email e senha, gerando automaticamente um hash seguro para armazenamento para a senha.
-        Nome de usuário é buscado automaticamente na tabela de funcionários da MSE (tbl_employees). 
-        Apenas funcionários previamente registrados podem se cadastrar.
+        Registers a new surveyor user account in the system.
+        Requires an email and password; a secure password hash is generated automatically for storage.
+        The user's display name is automatically retrieved from the MSE employees table (tbl_employees).
+        Only employees previously registered in the MSE system may create an account.
       operationId: create_user
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "user"
           required: true
-          description: "Dados do usuário a ser criado"
+          description: "New surveyor user data"
           schema:
             type: object
             required:
@@ -6315,11 +6350,11 @@ paths:
             properties:
               email:
                 type: string
-                description: "Email do usuário (único no sistema)"
+                description: "Email address of the user (must be unique in the system)"
                 example: "joao.silva@example.com"
               password:
                 type: string
-                description: "Senha do usuário"
+                description: "Account password (will be securely hashed before storage)"
                 example: "senha123"
       responses:
         "201":
@@ -6400,22 +6435,22 @@ paths:
     get:
       tags:
         - Users Surveyor
-      summary: Obter um usuário surveyor específico
+      summary: Get a specific surveyor user by ID
       description: |
-        Recupera informações detalhadas sobre um usuário surveyor específico pelo seu ID.
-        Útil para visualizar perfis de usuário e gerenciar contas individuais.
+        Retrieves detailed profile information for a specific surveyor user identified by their numeric ID.
+        Useful for viewing surveyor account details and managing individual surveyor profiles.
       operationId: get_user
       parameters:
         - in: path
           name: id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the surveyor user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do usuário vistoriador"
@@ -6461,32 +6496,32 @@ paths:
     put:
       tags:
         - Users Surveyor
-      summary: Atualizar um usuário surveyor
+      summary: Update a surveyor user
       description: |
-        Atualiza as informações de um usuário surveyor existente.
-        Permite diretamente a senha, e indiretamente o nome do usuário (quando essa função é chamada, o sistema procura na tabela tbl_employees se o funcionário teve seu nome trocado, e faz a atualização).
+        Updates the information of an existing surveyor user account.
+        The password can be updated directly. The display name is updated indirectly — when this endpoint is called, the system checks the MSE employees table (tbl_employees) for any name changes and applies them automatically.
       operationId: update_user
       parameters:
         - in: path
           name: id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the surveyor user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "user"
           required: true
-          description: "Dados do usuário a serem atualizados"
+          description: "Surveyor user fields to update"
           schema:
             type: object
             properties:
               password:
                 type: string
-                description: "Nova senha do usuário"
+                description: "New account password (will be securely hashed before storage)"
                 example: "novaSenha123"
       responses:
         "200":
@@ -6534,22 +6569,21 @@ paths:
     delete:
       tags:
         - Users Surveyor
-      summary: Excluir um usuário surveyor
+      summary: Delete a surveyor user account
       description: |
-        Remove permanentemente um usuário surveyor do sistema.
-        Esta operação não pode ser desfeita.
+        Permanently removes a surveyor user account from the system. This operation cannot be undone.
       operationId: delete_user
       parameters:
         - in: path
           name: id
           required: true
           type: integer
-          description: "ID do usuário a ser excluído"
+          description: "Unique identifier of the surveyor user to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Usuário excluído com sucesso"
@@ -6588,22 +6622,22 @@ paths:
     get:
       tags:
         - Users Surveyor
-      summary: Obter um usuário surveyor específico
+      summary: Export all data for a surveyor user
       description: |
-        Recupera todos os dados de todas as tabelas do banco que estejam relacionado ao usuário
-        em formato .db para swlite
+        Retrieves all data from all database tables related to a specific surveyor user and returns it as a SQLite .db file.
+        Used to export a complete data snapshot for a surveyor for offline use or data backup purposes.
       operationId: get_all_user_data
       parameters:
         - in: path
           name: id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the surveyor user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do usuário vistoriador"
@@ -6679,20 +6713,20 @@ paths:
     post:
       tags:
         - Users Surveyor
-      summary: Autenticar um usuário surveyor
+      summary: Authenticate a surveyor user
       description: |
-        Autentica um usuário surveyor usando email e senha.
+        Authenticates a surveyor user using their email and password credentials and returns authorization confirmation on success.
       operationId: login_user
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "credentials"
           required: true
-          description: "Credenciais do usuário"
+          description: "Surveyor user login credentials"
           schema:
             type: object
             required:
@@ -6701,11 +6735,11 @@ paths:
             properties:
               email:
                 type: string
-                description: "Email do usuário"
+                description: "Email address of the surveyor user"
                 example: "joao.silva@example.com"
               password:
                 type: string
-                description: "Senha do usuário"
+                description: "Account password"
                 example: "senha123"
       responses:
         "200":
@@ -6790,17 +6824,17 @@ paths:
     get:
       tags:
         - Vessels
-      summary: Listar todas as embarcações
+      summary: List all vessels
       description: |
-        Recupera uma lista completa de todas as embarcações cadastradas no sistema.
-        Útil para preencher menus dropdown ou exibir um catálogo completo de embarcações disponíveis.
+        Retrieves a complete list of all vessels registered in the system, ordered by name.
+        Useful for populating dropdown menus or displaying a catalog of available vessels for survey assignment.
       operationId: list_vessels
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de embarcações ordenadas por nome"
@@ -6856,22 +6890,21 @@ paths:
     post:
       tags:
         - Vessels
-      summary: Criar uma nova embarcação
+      summary: Register a new vessel
       description: |
-        Registra uma nova embarcação no sistema. Opcionalmente, permite cadastrar 
-        guindastes e suas capacidades SWL (Safe Working Load) na mesma operação.
-        Validações são aplicadas para garantir a integridade dos dados.
+        Registers a new vessel in the system. Optionally allows registering onboard cranes and their SWL (Safe Working Load) capacities in the same operation.
+        Data validation is applied to ensure integrity of all vessel measurements and specifications.
       operationId: create_vessel
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "vessel"
           required: true
-          description: "Dados da embarcação a ser criada"
+          description: "Vessel data to be registered"
           schema:
             type: object
             required:
@@ -7054,21 +7087,21 @@ paths:
     get:
       tags:
         - Vessels
-      summary: Buscar embarcações por nome
+      summary: Search vessels by name
       description: |
-        Realiza uma busca case-insensitive por embarcações cujos nomes contenham o termo especificado.
+        Performs a case-insensitive search for vessels whose names contain the specified search term. Returns all matching vessel records.
       operationId: search_vessels
       parameters:
         - in: query
           name: vesselName
           required: true
           type: string
-          description: "Termo a ser buscado nos nomes de embarcações"
+          description: "Search term to match against vessel names"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de embarcações que correspondem ao termo de busca"
@@ -7147,23 +7180,22 @@ paths:
     get:
       tags:
         - Vessels
-      summary: Obter embarcação específica por ID
+      summary: Get a specific vessel by ID
       description: |
-        Recupera informações detalhadas sobre uma embarcação específica, incluindo 
-        todos os seus guindastes e respectivas capacidades SWL.
-        Fornece uma visão completa de todos os detalhes técnicos da embarcação.
+        Retrieves detailed information about a specific vessel, including all of its onboard cranes and their respective SWL (Safe Working Load) capacities.
+        Provides a complete view of all technical specifications for the vessel.
       operationId: get_vessel
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes completos da embarcação"
@@ -7253,27 +7285,27 @@ paths:
     put:
       tags:
         - Vessels
-      summary: Atualizar uma embarcação
+      summary: Update a vessel
       description: |
-        Atualiza os dados de uma embarcação existente, incluindo seus guindastes e capacidades SWL.
-        O tipo da embarcação não pode ser alterado após a criação.
-        Permite adicionar novos guindastes e capacidades SWL, ou atualizar os existentes.
+        Updates the data of an existing vessel, including its cranes and SWL capacities.
+        Note: The vessel type cannot be changed after creation.
+        Supports adding new cranes and SWL capacities, or updating existing ones.
       operationId: update_vessel
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "vessel"
           required: true
-          description: "Dados atualizados da embarcação"
+          description: "Updated vessel data"
           schema:
             type: object
             properties:
@@ -7398,18 +7430,17 @@ paths:
     delete:
       tags:
         - Vessels
-      summary: Excluir uma embarcação
+      summary: Delete a vessel
       description: |
-        Remove permanentemente uma embarcação do sistema, incluindo todos os seus 
-        guindastes e capacidades SWL associados.
-        Esta operação não pode ser desfeita.
+        Permanently removes a vessel from the system, including all associated cranes and SWL capacities.
+        This operation cannot be undone.
       operationId: delete_vessel
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação a ser excluída"
+          description: "Unique identifier of the vessel to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
@@ -7487,22 +7518,22 @@ paths:
     get:
       tags:
         - Vessels
-      summary: Obter todos os guindastes de uma embarcação
+      summary: Get all cranes for a vessel
       description: |
-        Recupera a lista completa de todos os guindastes associados a uma embarcação específica.
-        Útil para visualizar e gerenciar os guindastes de cada embarcação separadamente.
+        Retrieves the complete list of all cranes associated with a specific vessel.
+        Useful for viewing and managing each vessel's cranes individually.
       operationId: get_vessel_cranes
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de guindastes da embarcação"
@@ -7590,27 +7621,27 @@ paths:
     get:
       tags:
         - Vessels
-      summary: Obter um guindaste específico
+      summary: Get a specific crane on a vessel
       description: |
-        Recupera informações detalhadas sobre um guindaste específico de uma embarcação.
-        Verifica se o guindaste existe e se pertence à embarcação especificada.
+        Retrieves detailed information about a specific crane on a vessel.
+        Verifies that the crane exists and belongs to the specified vessel.
       operationId: get_crane
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: path
           name: crane_id
           required: true
           type: integer
-          description: "ID do guindaste"
+          description: "Unique identifier of the crane"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do guindaste"
@@ -7656,31 +7687,31 @@ paths:
     put:
       tags:
         - Vessels
-      summary: Atualizar um guindaste
+      summary: Update a crane on a vessel
       description: |
-        Atualiza as informações de um guindaste específico em uma embarcação.
-        Atualmente, apenas a posição do guindaste pode ser modificada.
+        Updates the information of a specific crane on a vessel.
+        Currently, only the crane's position on the vessel can be modified.
       operationId: update_crane
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: path
           name: crane_id
           required: true
           type: integer
-          description: "ID do guindaste"
+          description: "Unique identifier of the crane"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "crane"
           required: true
-          description: "Dados atualizados do guindaste"
+          description: "Updated crane data"
           schema:
             type: object
             required:
@@ -7736,27 +7767,27 @@ paths:
     delete:
       tags:
         - Vessels
-      summary: Excluir um guindaste
+      summary: Delete a crane from a vessel
       description: |
-        Remove permanentemente um guindaste específico e todas as suas capacidades SWL associadas.
-        A exclusão do guindaste não afeta a embarcação à qual ele pertence.
+        Permanently removes a specific crane and all of its associated SWL capacities from the system.
+        Deleting the crane does not affect the vessel it belongs to.
       operationId: delete_crane
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: path
           name: crane_id
           required: true
           type: integer
-          description: "ID do guindaste a ser excluído"
+          description: "Unique identifier of the crane to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Guindaste excluído com sucesso"
@@ -7834,27 +7865,27 @@ paths:
     get:
       tags:
         - Vessels
-      summary: Obter todas as capacidades SWL de um guindaste
+      summary: Get all SWL capacities for a crane
       description: |
-        Recupera todas as capacidades de carga segura de trabalho (SWL) de um guindaste específico.
-        Os resultados são ordenados pelo valor do raio inicial para facilitar a visualização.
+        Retrieves all Safe Working Load (SWL) capacity records for a specific crane.
+        Results are ordered by the starting radius value for easy reference.
       operationId: get_crane_swl_capacities
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: path
           name: crane_id
           required: true
           type: integer
-          description: "ID do guindaste"
+          description: "Unique identifier of the crane"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de capacidades SWL do guindaste"
@@ -7955,36 +7986,36 @@ paths:
     put:
       tags:
         - Vessels
-      summary: Atualizar uma capacidade SWL
+      summary: Update a SWL capacity record
       description: |
-        Atualiza os valores de uma capacidade SWL específica para um guindaste.
-        Todos os parâmetros numéricos devem ser maiores que zero, exceto radius_start.
+        Updates the values of a specific Safe Working Load (SWL) capacity record for a crane.
+        All numeric parameters must be greater than zero, except radius_start which may be zero.
       operationId: update_swl_capacity
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: path
           name: crane_id
           required: true
           type: integer
-          description: "ID do guindaste"
+          description: "Unique identifier of the crane"
         - in: path
           name: swl_capacity_id
           required: true
           type: integer
-          description: "ID da capacidade SWL"
+          description: "Unique identifier of the SWL capacity record"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "swl_capacity"
           required: true
-          description: "Dados atualizados da capacidade SWL"
+          description: "Updated SWL capacity data"
           schema:
             type: object
             required:
@@ -8050,32 +8081,32 @@ paths:
     delete:
       tags:
         - Vessels
-      summary: Excluir uma capacidade SWL
+      summary: Delete a SWL capacity record
       description: |
-        Remove permanentemente uma capacidade SWL específica de um guindaste.
-        Verifica se a capacidade SWL existe e se pertence ao guindaste especificado.
+        Permanently removes a specific Safe Working Load (SWL) capacity record from a crane.
+        Verifies that the SWL capacity exists and belongs to the specified crane before deletion.
       operationId: delete_swl_capacity
       parameters:
         - in: path
           name: vessel_id
           required: true
           type: integer
-          description: "ID da embarcação"
+          description: "Unique identifier of the vessel"
         - in: path
           name: crane_id
           required: true
           type: integer
-          description: "ID do guindaste"
+          description: "Unique identifier of the crane"
         - in: path
           name: swl_capacity_id
           required: true
           type: integer
-          description: "ID da capacidade SWL a ser excluída"
+          description: "Unique identifier of the SWL capacity record to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Capacidade SWL excluída com sucesso"
@@ -8142,21 +8173,21 @@ paths:
     post:
       tags:
         - Notifications
-      summary: Criar uma nova notificação
+      summary: Create a new surveyor notification
       description: |
-        Cria uma nova notificação para um usuário surveyor específico.
-        Utilizado para alertar surveyors sobre tarefas, atualizações ou outras informações importantes.
+        Creates a new notification for a specific surveyor user.
+        Used to alert surveyors about new tasks, updates to ongoing surveys, or other relevant operational information.
       operationId: create_notification
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "notification"
           required: true
-          description: "Dados da notificação"
+          description: "Notification data"
           schema:
             type: object
             required:
@@ -8256,21 +8287,22 @@ paths:
     put:
       tags:
         - Notifications
-      summary: Alternar status de leitura de uma notificação
+      summary: Toggle the read status of a surveyor notification
       description: |
-        Marcar notificações como lidas ou não lidas no sistema.
+        Toggles a surveyor notification between read and unread states.
+        Useful for managing notification status in the surveyor's inbox.
       operationId: toggle_notification_read_status
       parameters:
         - in: path
           name: notification_id
           required: true
           type: integer
-          description: "ID da notificação"
+          description: "Unique identifier of the notification"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Status de leitura atualizado com sucesso"
@@ -8347,22 +8379,22 @@ paths:
     delete:
       tags:
         - Notifications
-      summary: Excluir uma notificação
+      summary: Delete a surveyor notification
       description: |
-        Remove permanentemente uma notificação do sistema.
-        Útil para limpar notificações antigas ou irrelevantes.
+        Permanently removes a specific surveyor notification from the system.
+        Useful for cleaning up old or irrelevant notifications.
       operationId: delete_notification
       parameters:
         - in: path
           name: notification_id
           required: true
           type: integer
-          description: "ID da notificação a ser excluída"
+          description: "Unique identifier of the notification to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Notificação excluída com sucesso"
@@ -8435,22 +8467,22 @@ paths:
     get:
       tags:
         - Notifications
-      summary: Obter todas as notificações de um usuário
+      summary: Get all notifications for a surveyor user
       description: |
-        Recupera todas as notificações enviadas a um usuário específico.
-        As notificações são ordenadas por data de criação (mais recentes primeiro).
+        Retrieves all notifications sent to a specific surveyor user.
+        Notifications are ordered by creation date, with the most recent first.
       operationId: get_user_notifications
       parameters:
         - in: path
           name: user_id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the surveyor user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de notificações do usuário"
@@ -8537,22 +8569,22 @@ paths:
     get:
       tags:
         - Notifications
-      summary: Obter contagem de notificações não lidas de um usuário
+      summary: Get unread notification count for a surveyor user
       description: |
-        Retorna a quantidade de notificações não lidas para um usuário específico.
-        Pode ser usado para exibir um indicador da quantidade de notificações pendentes.
+        Returns the number of unread notifications for a specific surveyor user.
+        Can be used to display a badge or indicator showing the number of pending notifications.
       operationId: get_user_unread_count
       parameters:
         - in: path
           name: user_id
           required: true
           type: integer
-          description: "ID do usuário"
+          description: "Unique identifier of the surveyor user"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Contagem de notificações não lidas"
@@ -8610,21 +8642,21 @@ paths:
     post:
       tags:
         - Attendants
-      summary: Criar novo participante da vistoria
+      summary: Create a new survey attendant
       description: |
-        Registra um novo participante associado a uma tarefa de vistoria.
-        Utilizado para documentar as pessoas presentes durante as atividades de inspeção.
+        Registers a new attendant associated with a survey task.
+        Used to document the individuals present during inspection activities, including their role and the organization they represent.
       operationId: create_attendant
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "attendant"
           required: true
-          description: "Dados do participante"
+          description: "Attendant data"
           schema:
             type: object
             required:
@@ -8731,21 +8763,22 @@ paths:
     get:
       tags:
         - Attendants
-      summary: Obter todos os participantes de uma tarefa específica
+      summary: Get all attendants for a specific survey task
       description: |
-        Recupera a lista completa de todos os participantes associados a uma tarefa específica.
+        Retrieves the complete list of all attendants associated with a specific survey task.
+        Returns each attendant's name, role, gender, and the organization they represent.
       operationId: get_attendants_by_task
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the survey task"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de participantes da tarefa"
@@ -8840,21 +8873,21 @@ paths:
     delete:
       tags:
         - Attendants
-      summary: Excluir um participante
+      summary: Delete a survey attendant
       description: |
-        Remove permanentemente um participante de vistoria do sistema.
+        Permanently removes a specific survey attendant record from the system.
       operationId: delete_attendant
       parameters:
         - in: path
           name: attendant_id
           required: true
           type: integer
-          description: "ID do participante a ser excluído"
+          description: "Unique identifier of the attendant to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Participante excluído com sucesso"
@@ -8921,21 +8954,21 @@ paths:
     post:
       tags:
         - Tasks Survey
-      summary: Criar nova tarefa de embarque
+      summary: Create a new boarding survey task
       description: |
-        Cria uma nova tarefa de embarque no sistema com os dados fornecidos.
-        Essencial para prepara as informações pertinentes antes do processo de vistoria de embarcações.
+        Creates a new boarding survey task in the system with the provided data.
+        Essential for preparing the relevant information before the vessel boarding inspection process begins.
       operationId: create_boarding_task
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "task"
           required: true
-          description: "Dados da tarefa de embarque"
+          description: "Boarding task data"
           schema:
             type: object
             required:
@@ -9039,22 +9072,22 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter tarefa de embarque por ID
+      summary: Get a boarding survey task by ID
       description: |
-        Recupera os detalhes completos de uma tarefa de embarque pelo seu ID.
-        Útil para visualização e edição de tarefas existentes.
+        Retrieves the complete details of a boarding survey task by its ID.
+        Includes task status, section completion flags, bollard counts, and associated ship photo URL.
       operationId: get_boarding_task_by_id
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa a ser recuperada"
+          description: "Unique identifier of the boarding survey task"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes da tarefa de embarque"
@@ -9140,26 +9173,26 @@ paths:
     put:
       tags:
         - Tasks Survey
-      summary: Atualizar uma tarefa de embarque
+      summary: Update a boarding survey task
       description: |
-        Atualiza os dados de uma tarefa de embarque existente.
-        Qualquer dado pode ser alterado exceto o ID da inspeção (id_survey) e da tarefa (id_task).
+        Updates the data of an existing boarding survey task.
+        Any field can be modified except the survey ID (id_survey) and task ID (id_task).
       operationId: update_boarding_task
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa a ser atualizada"
+          description: "Unique identifier of the boarding survey task to be updated"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "task"
           required: true
-          description: "Dados atualizados da tarefa"
+          description: "Updated boarding task data"
           schema:
             type: object
             properties:
@@ -9225,21 +9258,21 @@ paths:
     delete:
       tags:
         - Tasks Survey
-      summary: Excluir uma tarefa de embarque
+      summary: Delete a boarding survey task
       description: |
-        Remove permanentemente uma tarefa de embarque do sistema e todos os comentários relacionados.
+        Permanently removes a boarding survey task from the system, along with all associated comments.
       operationId: delete_boarding_task
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa a ser excluída"
+          description: "Unique identifier of the boarding survey task to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Tarefa de embarque excluída com sucesso"
@@ -9306,21 +9339,21 @@ paths:
     post:
       tags:
         - Tasks Survey
-      summary: Adicionar novo comentário a uma tarefa
+      summary: Add a new comment to a survey task
       description: |
-        Cria um novo comentário associado a uma tarefa específica.
-        Útil para documentar observações durante a execução das vistorias.
+        Creates a new inspector comment associated with a specific survey task and section.
+        Used to document observations and findings during the execution of boarding surveys.
       operationId: add_comment
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "comment"
           required: true
-          description: "Dados do comentário"
+          description: "Comment data"
           schema:
             type: object
             required:
@@ -9428,21 +9461,21 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter comentário específico por ID
+      summary: Get a specific comment by ID
       description: |
-        Recupera os detalhes de um comentário específico pelo seu ID.
+        Retrieves the details of a specific inspector comment by its ID.
       operationId: get_comment_by_id
       parameters:
         - in: path
           name: comment_id
           required: true
           type: integer
-          description: "ID do comentário a ser recuperado"
+          description: "Unique identifier of the comment to be retrieved"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do comentário"
@@ -9492,26 +9525,26 @@ paths:
     put:
       tags:
         - Tasks Survey
-      summary: Atualizar um comentário
+      summary: Update an existing comment
       description: |
-        Atualiza o conteúdo de um comentário existente.
-        O ID da tarefa (id_task) não pode ser alterado.
+        Updates the content of an existing inspector comment.
+        The associated task ID (id_task) cannot be changed after creation.
       operationId: update_comment
       parameters:
         - in: path
           name: comment_id
           required: true
           type: integer
-          description: "ID do comentário a ser atualizado"
+          description: "Unique identifier of the comment to be updated"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "comment"
           required: true
-          description: "Dados atualizados do comentário"
+          description: "Updated comment data"
           schema:
             type: object
             properties:
@@ -9569,21 +9602,21 @@ paths:
     delete:
       tags:
         - Tasks Survey
-      summary: Excluir comentário.
+      summary: Delete a comment
       description: |
-        Deleta um comentário específico pelo seu ID.
+        Permanently removes a specific inspector comment by its ID.
       operationId: delete_comment_by_id
       parameters:
         - in: path
           name: comment_id
           required: true
           type: integer
-          description: "ID do comentário a ser recuperado"
+          description: "Unique identifier of the comment to be deleted"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes do comentário"
@@ -9668,22 +9701,22 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todos os comentários de uma tarefa específica
+      summary: Get all comments for a specific survey task
       description: |
-        Recupera todos os comentários associados a uma tarefa específica.
-        Os comentários são ordenados pelo índice da seção.
+        Retrieves all inspector comments associated with a specific survey task.
+        Comments are ordered by section index for structured review.
       operationId: get_all_comments_from_task
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the survey task"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de comentários da tarefa"
@@ -9765,11 +9798,11 @@ paths:
     post:
       tags:
         - Tasks Survey
-      summary: Adicionar fotos a uma tarefa de vistoria de embarque
+      summary: Add photos to a boarding survey task
       description: |
-        Registra até 6 imagens associadas a uma tarefa de vistoria de embarque.
-        As imagens são enviadas como arquivos `multipart/form-data` e associadas à tarefa via `id_task` e `section_index`.
-        As imagens são armazenadas no Google Drive e o caminho da URL é persistido no banco de dados.
+        Uploads up to 6 images associated with a boarding survey task.
+        Images are submitted as `multipart/form-data` files and linked to the task via `id_task` and `section_index`.
+        Images are stored in Google Drive and the resulting URL is persisted in the database.
       operationId: add_photo
       consumes:
         - multipart/form-data
@@ -9778,12 +9811,12 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: formData
           name: data
           required: true
           type: string
-          description: 'JSON string contendo id_task e section_index. Exemplo: {"id_task": 42, "section_index": 2}'
+          description: 'JSON string containing the task identifier and section index. Example: {"id_task": 42, "section_index": 2}'
         - in: formData
           name: image_1
           type: string
@@ -9907,11 +9940,11 @@ paths:
     put:
       tags:
         - Tasks Survey
-      summary: Atualizar a imagem de uma foto existente
+      summary: Update an existing survey photo
       description: |
-        Substitui a imagem atual de uma foto associada a uma tarefa de vistoria de embarque.
-        A nova imagem é enviada como arquivo via `multipart/form-data`. 
-        A imagem anterior, se existir, será excluída do Google Drive.
+        Replaces the current image of a photo record associated with a boarding survey task.
+        The new image is submitted as a `multipart/form-data` file.
+        The previous image, if it exists, will be deleted from Google Drive.
       operationId: update_photo
       consumes:
         - multipart/form-data
@@ -9920,17 +9953,17 @@ paths:
           name: photo_id
           required: true
           type: integer
-          description: "ID da foto a ser atualizada"
+          description: "Unique identifier of the photo to be updated"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: formData
           name: image
           required: true
           type: string
-          description: "Nova imagem para substituir a atual"
+          description: "New image file to replace the current one"
       responses:
         "200":
           description: "Foto atualizada com sucesso"
@@ -9979,22 +10012,22 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter uma foto específica por ID
+      summary: Get a specific survey photo by ID
       description: |
-        Recupera os detalhes de uma foto específica pelo seu ID.
-        Inclui informações como o caminho da imagem e a seção associada.
+        Retrieves the details of a specific survey photo by its ID.
+        Includes information such as the image URL and the associated section index.
       operationId: get_photo_by_id
       parameters:
         - in: path
           name: photo_id
           required: true
           type: integer
-          description: "ID da foto"
+          description: "Unique identifier of the photo"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes da foto"
@@ -10044,23 +10077,23 @@ paths:
     delete:
       tags:
         - Tasks Survey
-      summary: Excluir uma foto de vistoria
+      summary: Delete a survey photo
       description: |
-        Remove permanentemente uma foto da base de dados e do Google Drive (se disponível).
-        A exclusão do arquivo no Google Drive pode falhar silenciosamente, mas a entrada no banco será sempre removida.
-        Esta operação é irreversível.
+        Permanently removes a survey photo from the database and from Google Drive (if available).
+        Deletion of the file from Google Drive may fail silently, but the database record will always be removed.
+        This operation is irreversible.
       operationId: delete_photo
       parameters:
         - in: path
           name: photo_id
           required: true
           type: integer
-          description: "ID da foto a ser excluída"
+          description: "Unique identifier of the photo to be deleted"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Foto excluída com sucesso"
@@ -10134,22 +10167,22 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todas as fotos de uma tarefa específica
+      summary: Get all photos for a specific survey task
       description: |
-        Recupera todas as fotos associadas a uma tarefa específica.
-        As fotos são retornadas ordenadas pelo índice da seção.
+        Retrieves all inspection photos associated with a specific survey task.
+        Photos are returned ordered by section index.
       operationId: get_all_photos_from_task
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the survey task"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de fotos da tarefa"
@@ -10246,27 +10279,27 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todas as fotos de uma tarefa e sessão específica
+      summary: Get all photos for a specific task and section
       description: |
-        Recupera todas as fotos associadas a uma tarefa específica em uma sessão.
-        As fotos são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspection photos associated with a specific survey task and section.
+        Photos are returned ordered by section index.
       operationId: get_all_photos_from_task_section
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the survey task"
         - in: path
           name: section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the section within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de fotos da tarefa"
@@ -10363,27 +10396,27 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todas as fotos de uma carga e sub-sessão específica
+      summary: Get all photos for a specific cargo item and subsection
       description: |
-        Recupera todas as fotos associadas a uma carga específica em uma sub-sessão.
-        As fotos são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspection photos associated with a specific cargo item and subsection.
+        Photos are returned ordered by subsection index.
       operationId: get_all_photos_from_cargo_subsection
       parameters:
         - in: path
           name: cargo_id
           required: true
           type: integer
-          description: "ID da tarefa"
+          description: "Unique identifier of the cargo item"
         - in: path
           name: sub_section_index
           required: true
           type: integer
-          description: "Indíce da sessão"
+          description: "Zero-based index of the subsection within the inspection checklist"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de fotos da carga"
@@ -10479,22 +10512,22 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todas as fotos de um lifting material.
+      summary: Get all photos for a lifting material
       description: |
-        Recupera todas as fotos associadas a um lifting material.
-        As fotos são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspection photos associated with a specific lifting material item.
+        Photos are returned ordered by subsection index.
       operationId: get_all_photos_from_lifting
       parameters:
         - in: path
           name: id_lifting
           required: true
           type: integer
-          description: "ID da material"
+          description: "Unique identifier of the lifting material"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de fotos da carga"
@@ -10590,22 +10623,22 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Obter todas as fotos de um lashing material.
+      summary: Get all photos for a lashing material
       description: |
-        Recupera todas as fotos associadas a um lashing material.
-        As fotos são retornadas ordenadas pelo índice da sessão.
+        Retrieves all inspection photos associated with a specific lashing material item.
+        Photos are returned ordered by subsection index.
       operationId: get_all_photos_from_lashing
       parameters:
         - in: path
           name: id_lashing
           required: true
           type: integer
-          description: "ID da material"
+          description: "Unique identifier of the lashing material"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de fotos da carga"
@@ -10703,22 +10736,22 @@ paths:
     put:
       tags:
         - Tasks Survey
-      summary: Atualizar condições da embarcação
+      summary: Update vessel operational conditions for a boarding task
       description: |
-        Atualiza os campos `external_cranes`, `wire`, `sheaves` e `operation_condition` de uma tarefa de inspeção (boarding).
-        O campo `id_survey` não pode ser alterado.
+        Updates the `external_cranes`, `wire`, `sheaves`, and `operation_condition` fields of a boarding survey task.
+        The survey ID (id_survey) cannot be changed.
       operationId: updateVesselConditions
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa de inspeção (boarding task)"
+          description: "Unique identifier of the boarding survey task"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: "Tarefa de embarque atualizada com sucesso"
@@ -10773,22 +10806,22 @@ paths:
     put:
       tags:
         - Tasks Survey
-      summary: Atualizar quantidade de cabeços (bollards)
+      summary: Update bollard counts for a boarding task
       description: |
-        Atualiza os campos `num_bollards_fwd` e `num_bollards_aft` de uma tarefa de inspeção (boarding).
-        O campo `id_survey` não pode ser alterado.
+        Updates the `num_bollards_fwd` (forward) and `num_bollards_aft` (aft) bollard count fields of a boarding survey task.
+        The survey ID (id_survey) cannot be changed.
       operationId: updateBollardsQuantity
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa de inspeção (boarding task)"
+          description: "Unique identifier of the boarding survey task"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave de API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: "Tarefa de embarque atualizada com sucesso"
@@ -10843,22 +10876,22 @@ paths:
     put:
       tags:
         - Tasks Survey
-      summary: Atualizar adequação de armazenamento interno
+      summary: Update internal storage adequacy for a boarding task
       description: |
-        Atualiza o campo `storage_adequate` de uma tarefa de inspeção (boarding).
-        O campo `id_survey` não pode ser alterado.
+        Updates the `storage_adequate` field of a boarding survey task.
+        The survey ID (id_survey) cannot be changed.
       operationId: updateInternalStorageAdequacy
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa de inspeção (boarding task)"
+          description: "Unique identifier of the boarding survey task"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave de API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: "Tarefa de embarque atualizada com sucesso"
@@ -10914,22 +10947,22 @@ paths:
     get:
       tags:
         - Tasks Survey
-      summary: Consultar informações completas da tarefa
+      summary: Get complete information for a boarding survey task
       description: |
-        Retorna todos os dados registrados de uma tarefa de inspeção (boarding), incluindo informações operacionais, título, descrição e status.
-        Este endpoint acessa diretamente os dados salvos na tabela `tbl_task_survey_boarding`.
+        Returns all recorded data for a boarding survey task, including operational fields, title, description, and status.
+        This endpoint directly accesses data stored in the `tbl_task_survey_boarding` table.
       operationId: getAllTaskInfo
       parameters:
         - in: path
           name: task_id
           required: true
           type: integer
-          description: "ID da tarefa de inspeção (boarding task)"
+          description: "Unique identifier of the boarding survey task"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave de API para autenticação"
+          description: "API key for authentication"
       responses:
         200:
           description: "Informações da tarefa retornadas com sucesso"
@@ -10984,17 +11017,17 @@ paths:
     get:
       tags:
         - Demandas
-      summary: Obter todas as demandas atribuídas a um vistoriador específico
+      summary: Get all survey demands assigned to a specific surveyor
       description: |
-        Recupera todas as demandas atribuídas a um surveyor específico, identificado pelo seu ID.
+        Retrieves all survey demands assigned to a specific surveyor, identified by their user ID.
 
-        Suporta dois filtros opcionais:
-        - **status**: pode receber múltiplos valores separados por vírgula (por exemplo, `status=Pending,Active`), que serão usados para filtrar as demandas pelo campo **survey_status**.
-        - **forToday**: se definido como **true**, retorna apenas as demandas cuja data de entrega (`dt_entrega`) é igual à data atual.
+        Supports two optional filters:
+        - **status**: accepts multiple comma-separated values (e.g., `status=Pending,Active`) to filter demands by the **survey_status** field.
+        - **forToday**: if set to **true**, returns only demands whose delivery date (`dt_entrega`) matches the current date.
 
-        Cada demanda retornada inclui informações do cliente, da embarcação associada, status da vistoria e número de tarefas vinculadas.
+        Each returned demand includes client information, associated vessel details, survey status, and the number of linked tasks.
 
-        Em caso de erro de validação (por exemplo, status inválido), uma resposta 400 será retornada com os detalhes.
+        If a validation error occurs (e.g., invalid status value), a 400 response will be returned with details.
 
       operationId: get_demandas_by_user
       parameters:
@@ -11002,22 +11035,22 @@ paths:
           name: user_id
           required: true
           type: integer
-          description: "ID do usuário vistoriador"
+          description: "Unique identifier of the surveyor user"
         - in: query
           name: status
           required: false
           type: string
-          description: "Filtro opcional de status. Permite múltiplos valores separados por vírgula (ex: Awaiting to Start,Pending,Active)"
+          description: "Optional status filter. Accepts multiple comma-separated values (e.g., Awaiting to Start,Pending,Active)"
         - in: query
           name: forToday
           required: false
           type: boolean
-          description: "Se verdadeiro (`true`), filtra apenas as demandas com data de entrega igual à data atual"
+          description: "If true, returns only demands with a delivery date equal to today's date"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de demandas atribuídas ao vistoriador"
@@ -11147,29 +11180,29 @@ paths:
     put:
       tags:
         - Demandas
-      summary: Atualizar o status de uma demanda
+      summary: Update the status of a survey demand
       description: |
-        Atualiza o status de uma demanda específica identificada pelo seu ID.
-        Esta operação é importante para refletir o progresso das vistorias no sistema, permitindo
-        que gerentes e clientes acompanhem o andamento das inspeções.
-        O status pode ser alterado para qualquer um dos valores permitidos: "Awaiting to Start",
-        "Pending", "Standby", "Active" ou "Finished".
+        Updates the status of a specific survey demand identified by its ID.
+        This operation is important for reflecting survey progress in the system, allowing
+        managers and clients to track the progress of inspections.
+        The status can be changed to any of the permitted values: "Awaiting to Start",
+        "Pending", "Standby", "Active", or "Finished".
       operationId: update_demanda_status
       parameters:
         - in: path
           name: demanda_id
           required: true
           type: integer
-          description: "ID da demanda a ser atualizada"
+          description: "Unique identifier of the survey demand to be updated"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "status"
           required: true
-          description: "Novo status para a demanda"
+          description: "New status for the survey demand"
           schema:
             type: object
             required:
@@ -11251,10 +11284,10 @@ paths:
     put:
       tags:
         - Demandas
-      summary: Atualizar localização e horário de confirmação de chegada da demanda
+      summary: Update arrival location and confirmation time for a demand
       description: |
-        Atualiza os campos `location_confirmation` e `time_confirmation` de uma demanda específica e define o campo `have_arrived` como verdadeiro.
-        Retorna erro caso a demanda não seja encontrada ou os dados estejam ausentes.
+        Updates the `location_confirmation` and `time_confirmation` fields of a specific survey demand and sets the `have_arrived` flag to true.
+        Returns an error if the demand is not found or required data is missing.
       operationId: update_demanda_location
       consumes:
         - application/json
@@ -11263,11 +11296,11 @@ paths:
           name: demanda_id
           required: true
           type: integer
-          description: "ID da demanda a ser atualizada"
+          description: "Unique identifier of the survey demand to be updated"
         - in: body
           name: body
           required: true
-          description: "Dados de confirmação de chegada"
+          description: "Arrival confirmation data"
           schema:
             type: object
             required:
@@ -11360,10 +11393,10 @@ paths:
     put:
       tags:
         - Demandas
-      summary: Indicar que o surveyor iniciou a mobilização em direção ao local da inspeção
+      summary: Indicate that the surveyor has started mobilizing toward the inspection site
       description: |
-        Atualiza os campos `moving_to_location` de uma demanda específica como verdadeiro.
-        Retorna erro caso a demanda não seja encontrada.
+        Sets the `moving_to_location` flag of a specific survey demand to true.
+        Returns an error if the demand is not found.
       operationId: update_demanda_moving
       consumes:
         - application/json
@@ -11372,7 +11405,7 @@ paths:
           name: demanda_id
           required: true
           type: integer
-          description: "ID da demanda a ser atualizada"
+          description: "Unique identifier of the survey demand to be updated"
       responses:
         "200":
           description: "Informações de confirmação atualizadas com sucesso"
@@ -11444,23 +11477,23 @@ paths:
     get:
       tags:
         - Demandas
-      summary: Obter todas as tarefas de uma vistoria específica
+      summary: Get all tasks for a specific survey demand
       description: |
-        Recupera todas as tarefas associadas a uma vistoria específica identificada pelo seu ID.
-        Este endpoint é fundamental para surveyors visualizarem as tarefas que precisam executar
-        durante uma vistoria. As tarefas são retornadas em ordem crescente de ID.
+        Retrieves all tasks associated with a specific survey demand identified by its ID.
+        This endpoint is essential for surveyors to view the tasks they need to execute
+        during a survey. Tasks are returned in ascending order by ID.
       operationId: get_all_tasks_from_survey
       parameters:
         - in: path
           name: demanda_id
           required: true
           type: integer
-          description: "ID da vistoria"
+          description: "Unique identifier of the survey demand"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de tarefas da vistoria"
@@ -11534,22 +11567,22 @@ paths:
     get:
       tags:
         - Demandas
-      summary: Obter informações detalhadas sobre uma demanda específica
+      summary: Get detailed information about a specific survey demand
       description: |
-        Recupera informações completas sobre uma demanda específica identificada pelo seu ID.
-        Este endpoint fornece todos os detalhes relevantes de uma demanda dentro das operações dos surveyors.
+        Retrieves complete information about a specific survey demand identified by its ID.
+        This endpoint provides all relevant details of a demand within surveyor operations.
       operationId: get_demanda_by_id
       parameters:
         - in: path
           name: demanda_id
           required: true
           type: integer
-          description: "ID da demanda"
+          description: "Unique identifier of the survey demand"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Detalhes da demanda"
@@ -11653,23 +11686,23 @@ paths:
     get:
       tags:
         - Demandas
-      summary: Buscar tarefas que correspondam ao nome fornecido
+      summary: Search tasks by name
       description: |
-        Realiza uma busca case-insensitive por tarefas cujos nomes contenham o termo de busca fornecido.
-        Este endpoint é usado principalmente para autocompletar campos durante a criação ou edição de relatórios de Lashing (MSE Desenvolvimento de Ferramentas Digitais)
-        A busca é flexível, correspondendo a qualquer parte do nome da tarefa.
+        Performs a case-insensitive search for tasks whose names contain the provided search term.
+        This endpoint is primarily used to autocomplete fields during the creation or editing of survey reports.
+        The search is flexible, matching any part of the task name.
       operationId: search_demanda_tarefas
       parameters:
         - in: query
           name: name
           required: true
           type: string
-          description: "Termo de busca para correspondência com nomes de tarefas"
+          description: "Search term to match against task names"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de nomes de tarefas que correspondem ao termo de busca"
@@ -11727,19 +11760,19 @@ paths:
     get:
       tags:
         - Customers
-      summary: Listar todos os clientes
+      summary: List all customers
       description: |
-        Recupera uma lista completa de todos os clientes MSE do banco de dados.
-        Este endpoint é essencial para preencher menus dropdown de seleção de clientes,
-        gerar relatórios e fornecer uma visão geral de todos os clientes no sistema.
-        Os resultados são ordenados alfabeticamente pelo nome do cliente para maior conveniência.
+        Retrieves a complete list of all MSE customer companies from the database.
+        This endpoint is essential for populating customer selection dropdowns,
+        generating reports, and providing an overview of all customers in the system.
+        Results are ordered alphabetically by customer name for convenience.
       operationId: get_all_customers
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de todos os clientes no sistema"
@@ -11774,21 +11807,21 @@ paths:
     post:
       tags:
         - Customers
-      summary: Adicionar um novo cliente
+      summary: Add a new customer company
       description: |
-        Cria um novo registro de cliente no sistema MSE.
-        Este endpoint é utilizado durante o processo de cadastro de novos cliente, permitindo ao sistema associar embarcações, vistorias e outros dados ao cliente apropriado. Previne nomes de clientes duplicados para manter a integridade dos dados.
+        Creates a new customer record in the MSE system.
+        This endpoint is used during the registration of new client companies, allowing the system to associate vessels, surveys, and other data with the appropriate customer. Prevents duplicate customer names to maintain data integrity.
       operationId: add_customer
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: "body"
           name: "customer"
           required: true
-          description: "Informações do cliente a ser adicionado"
+          description: "Customer information to be added"
           schema:
             type: object
             required:
@@ -11879,22 +11912,22 @@ paths:
     get:
       tags:
         - Customers
-      summary: Obter cliente por ID
+      summary: Get a customer by ID
       description: |
-        Recupera informações detalhadas sobre um cliente específico usando seu ID único.
-        Ele verifica se o cliente existe antes de retornar as informações.
+        Retrieves detailed information about a specific customer company using its unique ID.
+        Verifies that the customer exists before returning the information.
       operationId: get_customer_by_id
       parameters:
         - in: path
           name: customer_id
           required: true
           type: integer
-          description: "Identificador único do cliente a ser recuperado"
+          description: "Unique identifier of the customer to be retrieved"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Informações detalhadas sobre o cliente solicitado"
@@ -11967,22 +12000,22 @@ paths:
     get:
       tags:
         - Customers
-      summary: Buscar clientes que correspondam ao nome fornecido
+      summary: Search customers by name
       description: |
-        Realiza uma busca case-insensitive por clientes cujos nomes contenham o termo de busca fornecido.
-        Este endpoint é fundamental para interfaces de usuário onde operadores precisam encontrar rapidamente clientes sem conhecer seu nome exato ou ID.
+        Performs a case-insensitive search for customers whose names contain the provided search term.
+        This endpoint is essential for user interfaces where operators need to quickly find customers without knowing their exact name or ID.
       operationId: search_customer
       parameters:
         - in: query
           name: name
           required: true
           type: string
-          description: "Termo de busca para correspondência com nomes de clientes (não diferencia maiúsculas/minúsculas, suporta correspondências parciais)"
+          description: "Search term to match against customer names (case-insensitive, supports partial matches)"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
       responses:
         "200":
           description: "Lista de clientes que correspondem aos critérios de busca"
@@ -12050,11 +12083,11 @@ paths:
     post:
       tags:
         - Clients
-      summary: Upload de foto de cliente
+      summary: Upload a client photo
       description: |
-        Envia uma única imagem representando o cliente para o Google Drive.
-        Usa a pasta compartilhada definida pela variável de ambiente DRIVE_CLIENTS_FOLDER.
-        O nome do arquivo será baseado em client_sigla + timestamp para evitar colisões.
+        Uploads a single image representing the client to Google Drive.
+        Uses the shared folder defined by the DRIVE_CLIENTS_FOLDER environment variable.
+        The file name is based on client_sigla + timestamp to avoid naming collisions.
       operationId: upload_client_photo
       consumes:
         - multipart/form-data
@@ -12063,17 +12096,17 @@ paths:
           name: id_client
           required: true
           type: string
-          description: Id do cliente a qual a foto faz referência. Deve existir no banco de dados
+          description: "Unique identifier of the client the photo belongs to. Must exist in the database."
         - in: formData
           name: image
           required: true
           type: string
-          description: Arquivo de imagem (png, jpg ou jpeg).
+          description: "Image file to upload (png, jpg, or jpeg)."
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: "API key for authentication"
       responses:
         201:
           description: Foto enviada com sucesso
@@ -12136,20 +12169,20 @@ paths:
     get:
       tags:
         - Clients
-      summary: Obter foto do cliente
-      description: Retorna a(s) foto(s) cadastrada(s) para o cliente (ordenadas por id_photo desc).
+      summary: Get client photos
+      description: "Returns the photo(s) registered for a client, ordered by id_photo descending (most recent first)."
       operationId: get_client_photo
       parameters:
         - in: path
           name: id_client
           required: true
           type: integer
-          description: ID do cliente
+          description: "Unique identifier of the client"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: "API key for authentication"
       responses:
         200:
           description: Lista de fotos do cliente
@@ -12187,20 +12220,20 @@ paths:
     delete:
       tags:
         - Clients
-      summary: Deletar foto do cliente
-      description: Remove a foto atual do cliente (apenas a mais recente, se existir) e registra log.
+      summary: Delete a client photo
+      description: "Removes the most recent photo registered for the client (if one exists) and logs the deletion."
       operationId: delete_client_photo
       parameters:
         - in: path
           name: id_client
           required: true
           type: integer
-          description: ID do cliente
+          description: "Unique identifier of the client"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: "API key for authentication"
       responses:
         200:
           description: Foto deletada com sucesso
@@ -12270,26 +12303,26 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Obter todas as medicoes
+      summary: Get all financial measurements within a date range
       description: |
-        Recupera todas as medicoes
+        Retrieves all financial measurement records (medicoes) within the specified date range.
       operationId: get_medicoes_date
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: query
           name: data_inicial
           required: true
           type: string
-          description: Data de início do período selecionado
+          description: "Start date of the query period (format YYYY-MM-DD)"
         - in: query
           name: data_final
           required: true
           type: string
-          description: Data de final do período selecionado
+          description: "End date of the query period (format YYYY-MM-DD)"
       responses:
         "200":
           description: "Lista das medições compreendidas entre as datas data"
@@ -12321,20 +12354,20 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Obter medicoes por demanda
-      description: Recupera todas as medicoes associadas a uma demanda específica.
+      summary: Get financial measurements for a specific survey demand
+      description: "Retrieves all financial measurement records associated with a specific survey demand."
       operationId: get_medicoes_by_demanda
       parameters:
         - in: path
           name: demanda_id
           required: true
           type: integer
-          description: ID da demanda
+          description: "Unique identifier of the survey demand"
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: "API key for authentication"
       responses:
         "200":
           description: Lista de medições associadas à demanda
@@ -12405,20 +12438,20 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Obter medicao por ID
-      description: Recupera uma medicao específica pelo seu ID.
+      summary: Get a financial measurement by ID
+      description: "Retrieves a specific financial measurement record by its unique ID."
       operationId: get_medicao_by_id
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: "API key for authentication"
         - in: path
           name: medicao_id
           required: true
           type: integer
-          description: ID da medicao
+          description: "Unique identifier of the financial measurement record"
       responses:
         "200":
           description: Detalhes da medicao
@@ -12521,10 +12554,10 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Exportar medicoes para CSV
+      summary: Export financial measurements to CSV
       description: |
-        Exporta todas as medicoes dentro de um período específico para um arquivo CSV.
-        O arquivo inclui informações detalhadas das medicoes e suas demandas relacionadas.
+        Exports all financial measurement records within a specified date range to a CSV file.
+        The file includes detailed measurement information and related survey demand data.
       operationId: export_medicoes_csv
       produces:
         - text/csv
@@ -12533,19 +12566,19 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: query
           name: data_inicial
           required: true
           type: string
           format: date
-          description: Data de início do período (formato YYYY-MM-DD)
+          description: "Start date of the period (format YYYY-MM-DD)"
         - in: query
           name: data_final
           required: true
           type: string
           format: date
-          description: Data final do período (formato YYYY-MM-DD)
+          description: "End date of the period (format YYYY-MM-DD)"
       responses:
         "200":
           description: "Arquivo CSV gerado com sucesso"
@@ -12623,29 +12656,29 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Obter todas as notas fiscais
+      summary: Get all tax invoices (notas fiscais) within a date range
       description: |
-        Recupera todas as notas fiscais dentro de um período específico, com base na data de emissão.
-        Inclui informações relacionadas das demandas quando disponíveis.
+        Retrieves all tax invoice (nota fiscal) records within a specific date range, based on the issuance date.
+        Includes related survey demand information when available.
       operationId: get_notas_fiscais
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: query
           name: data_inicial
           required: true
           type: string
           format: date
-          description: Data de início do período (formato YYYY-MM-DD)
+          description: "Start date of the period (format YYYY-MM-DD)"
         - in: query
           name: data_final
           required: true
           type: string
           format: date
-          description: Data final do período (formato YYYY-MM-DD)
+          description: "End date of the period (format YYYY-MM-DD)"
       responses:
         "200":
           description: "Lista das notas fiscais compreendidas entre as datas especificadas"
@@ -12677,20 +12710,20 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Obter nota fiscal por ID
-      description: Recupera uma nota fiscal específica pelo seu ID.
+      summary: Get a tax invoice (nota fiscal) by ID
+      description: "Retrieves a specific tax invoice (nota fiscal) record by its unique ID."
       operationId: get_nota_fiscal_by_id
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: "API key for authentication"
         - in: path
           name: nota_id
           required: true
           type: integer
-          description: ID da nota fiscal
+          description: "Unique identifier of the tax invoice"
       responses:
         "200":
           description: Detalhes da nota fiscal
@@ -12760,20 +12793,20 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Obter notas fiscais por ETL ID
-      description: Recupera todas as notas fiscais associadas a um ETL ID específico.
+      summary: Get tax invoices by ETL ID
+      description: "Retrieves all tax invoice (nota fiscal) records associated with a specific ETL process ID."
       operationId: get_notas_fiscais_by_etl
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
-          description: Chave API para autenticação
+          description: "API key for authentication"
         - in: path
           name: etl_id
           required: true
           type: integer
-          description: ID do ETL
+          description: "Unique identifier of the ETL process"
       responses:
         "200":
           description: Lista de notas fiscais associadas ao ETL ID
@@ -12876,11 +12909,11 @@ paths:
     get:
       tags:
         - Medicoes
-      summary: Exportar notas fiscais para CSV
+      summary: Export tax invoices to CSV
       description: |
-        Exporta todas as notas fiscais dentro de um período específico para um arquivo CSV.
-        O arquivo inclui informações detalhadas das notas fiscais e suas demandas relacionadas
-        (nome da demanda, cliente e classificação).
+        Exports all tax invoice (nota fiscal) records within a specified date range to a CSV file.
+        The file includes detailed invoice information and related survey demand data
+        (demand name, client, and rating).
       operationId: export_notas_fiscais_csv
       produces:
         - text/csv
@@ -12889,19 +12922,19 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: query
           name: data_inicial
           required: true
           type: string
           format: date
-          description: Data de início do período (formato YYYY-MM-DD)
+          description: "Start date of the period (format YYYY-MM-DD)"
         - in: query
           name: data_final
           required: true
           type: string
           format: date
-          description: Data final do período (formato YYYY-MM-DD)
+          description: "End date of the period (format YYYY-MM-DD)"
       responses:
         "200":
           description: "Arquivo CSV gerado com sucesso"
@@ -12946,7 +12979,10 @@ paths:
     post:
       tags:
         - Medicoes
-      summary: Extraí dados essênciais de um arquivo pdf de nota fiscal, nota de débito ou invoice
+      summary: Extract key data from a PDF invoice, debit note, or fiscal document
+      description: |
+        Extracts essential financial data fields from a PDF file (nota fiscal, debit note, or invoice)
+        using AI-assisted parsing. Returns structured data for further processing.
       operationId: extractPdfData
       consumes:
         - multipart/form-data
@@ -12955,16 +12991,17 @@ paths:
           name: data
           required: true
           type: string
-          description: json no infomando o tipo da nota
+          description: "JSON string specifying the document type. Example: {\"type\": \"nota_fiscal\"}"
         - in: formData
           name: file
           required: true
           type: string
-          description: Arquivo pdf da nota
+          description: "PDF file of the financial document to be parsed"
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
+          description: "API key for authentication"
       responses:
         '200':
           description: PDF data extracted successfully
@@ -13025,10 +13062,10 @@ paths:
     post:
       tags:
         - Medicoes
-      summary: Salva o pdf de nota fiscal na pasta drive da demanda
+      summary: Upload a tax invoice PDF to a survey demand's Drive folder
       description: |
-        Regista 1 nota fiscal.
-        O PDF é armazenado no Google Drive.
+        Registers a tax invoice (nota fiscal) PDF by uploading it to the associated survey demand's Google Drive folder.
+        The PDF is stored in Google Drive and linked to the demand record.
       operationId: add_pdf_nota
       consumes:
         - multipart/form-data
@@ -13037,17 +13074,17 @@ paths:
           name: x-api-key
           required: true
           type: string
-          description: "Chave API para autenticação"
+          description: "API key for authentication"
         - in: formData
           name: data
           required: true
           type: string
-          description: 'JSON string contendo id_demanda. Exemplo: {"id_demanda": 42}'
+          description: 'JSON string containing the survey demand identifier. Example: {"id_demanda": 42}'
         - in: formData
           name: file
           type: string
           required: false
-          description: "Arquivo do PDF da nota fiscal"
+          description: "Tax invoice PDF file to be uploaded"
       responses:
         "201":
           description: "PDF adicionado com sucesso"
@@ -13100,12 +13137,14 @@ paths:
     get:
       tags:
         - System
-      summary: Health check endpoint
+      summary: API health check
+      description: "Returns the health status of the API service."
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
+          description: "API key for authentication"
       operationId: health_check
       responses:
         "200":
@@ -13120,12 +13159,14 @@ paths:
     get:
       tags:
         - System
-      summary: Database check endpoint
+      summary: Database connectivity check
+      description: "Verifies that the API can successfully connect to and query the database."
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
+          description: "API key for authentication"
       operationId: ping_check
       responses:
         "200":
@@ -13141,11 +13182,13 @@ paths:
       tags:
         - System
       summary: Database connection test
+      description: "Tests the database connection and returns the connection status."
       parameters:
         - in: "header"
           name: "x-api-key"
           required: true
           type: string
+          description: "API key for authentication"
       operationId: db_test
       responses:
         "200":
@@ -13160,8 +13203,8 @@ paths:
     get:
       tags:
         - System
-      summary: Obter versão atual do app
-      description: Retorna o número da versão atual do app para atualização.
+      summary: Get the current app version
+      description: "Returns the current application version number, used by the mobile client for update checks."
       operationId: get_app_version
       produces:
         - application/json
