@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   title: MSE (Test) Gateway
   description: The Test Environent for the API Gateway MSE-Central service - an API dedicated to accessing and manipulating data shared between different projects
-  version: 1.1.8
+  version: 1.0.0
 tags:
   - name: Cargo
     description: Cargo management endpoints
@@ -95,7 +95,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -166,7 +166,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 180
   /survey_pdf/{id_demanda}:
@@ -192,7 +192,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -222,7 +222,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -251,7 +251,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /survey_pdf:
     post:
@@ -282,7 +282,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -305,7 +305,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /statement-of-facts/demanda/{demanda_id}:
     get:
@@ -326,7 +326,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -353,7 +353,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /statement-of-facts/demanda/cargo/{cargo_id}:
     get:
@@ -374,7 +374,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -401,7 +401,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /statement-of-facts/{event_id}:
     put:
@@ -433,7 +433,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -460,7 +460,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -487,7 +487,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /statement-of-facts/cargo/{event_id}:
     put:
@@ -519,7 +519,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -546,7 +546,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -573,7 +573,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /statement-of-facts:
     post:
@@ -599,7 +599,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -621,7 +621,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /statement-of-facts/cargo:
     post:
@@ -647,7 +647,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -669,7 +669,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /surveyor/users/email/{email}:
     options:
@@ -703,7 +703,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -759,7 +759,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /customer/users/email/{email}:
     options:
@@ -793,7 +793,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -849,7 +849,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lashing-material/cargo/{id_cargo}:
     get:
@@ -870,7 +870,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -898,7 +898,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lifting-material/cargo/{id_cargo}:
     get:
@@ -919,7 +919,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -947,7 +947,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /relation/{relation_type}/{id_rlt}:
     delete:
@@ -979,7 +979,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -1017,7 +1017,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /relation:
     options:
@@ -1041,7 +1041,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -1098,7 +1098,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/comments/task/{task_id}/section/{section_index}:
     options:
@@ -1137,7 +1137,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -1224,7 +1224,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/comments/lifting/{lifting_id}/subsection/{sub_section_index}:
     options:
@@ -1263,7 +1263,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -1350,7 +1350,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/comments/lashing/{lashing_id}/subsection/{sub_section_index}:
     options:
@@ -1389,7 +1389,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -1476,7 +1476,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lashing/inspection/{lashing_type}:
     post:
@@ -1505,7 +1505,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -1538,7 +1538,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lashing/inspection/{lashing_id}/{lashing_type}:
     get:
@@ -1570,7 +1570,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -1605,7 +1605,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -1636,7 +1636,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -1674,7 +1674,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lifting/inspection/{lifting_type}:
     post:
@@ -1703,7 +1703,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -1736,7 +1736,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lifting/inspection/{lifting_id}/{lifting_type}:
     get:
@@ -1768,7 +1768,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -1803,7 +1803,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -1834,7 +1834,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -1872,7 +1872,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/comments/cargo/{cargo_id}/subsection/{sub_section_index}:
     options:
@@ -1911,7 +1911,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -1998,7 +1998,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/comments/task/{task_id}/section/{section_index}/subsection/{subsection_index}:
@@ -2043,7 +2043,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -2135,7 +2135,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/photos/task/{task_id}/section/{section_index}/subsection/{subsection_index}:
     options:
@@ -2179,7 +2179,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -2259,7 +2259,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tarefas/{id_demanda}:
     options:
@@ -2297,7 +2297,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -2371,7 +2371,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS  
   /notifications-customer:
     options:
@@ -2399,7 +2399,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -2481,7 +2481,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 80.0
   /notifications-customer/{notification_id}:
@@ -2516,7 +2516,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -2568,7 +2568,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /notifications-customer/user/{user_id}:
     options:
@@ -2602,7 +2602,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app/
+        address: https://mse-api-915682166260.southamerica-east1.run.app/
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -2672,7 +2672,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /customer/users:
     options:
@@ -2700,7 +2700,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -2743,7 +2743,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -2817,7 +2817,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /customer/users/{id}:
     options:
@@ -2851,7 +2851,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -2907,7 +2907,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -2979,7 +2979,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -3031,7 +3031,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /customer/auth/login:
     options:
@@ -3059,7 +3059,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -3140,7 +3140,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /demandas/surveyor/customer/{customer_id}:
     options:
@@ -3175,7 +3175,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -3295,7 +3295,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /checklist:
     post:
@@ -3326,7 +3326,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -3349,7 +3349,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /checklist/{id_survey}:
     get:
@@ -3374,7 +3374,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -3404,7 +3404,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -3433,7 +3433,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /offline_provider:
     options:
@@ -3466,7 +3466,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -3503,7 +3503,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
   /offline_provider/export_user_data:
     options:
@@ -3536,7 +3536,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -3573,7 +3573,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
         deadline: 180.0
   /offline_provider/user/{user_id}/import_user_data:
@@ -3617,7 +3617,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
         deadline: 180.0
     options:
@@ -3655,7 +3655,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tarefas:
     options:
@@ -3688,7 +3688,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -3910,7 +3910,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS  
   /demandas:
     options:
@@ -3943,7 +3943,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -4108,7 +4108,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS  
   /lifting-material:
     post:
@@ -4136,7 +4136,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4159,7 +4159,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lifting-material/{id_lifting_material}:
     get:
@@ -4180,7 +4180,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -4206,7 +4206,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -4255,7 +4255,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4283,7 +4283,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lifting-material/all/{id_task}:
     get:
@@ -4309,7 +4309,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4337,7 +4337,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lifting-operation:
     post:
@@ -4365,7 +4365,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4397,7 +4397,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lifting-operation/{cargo_id}:
     get:
@@ -4424,7 +4424,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -4454,7 +4454,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4487,7 +4487,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/storage:
     post:
@@ -4516,7 +4516,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4549,7 +4549,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/storage/{cargo_id}:
     get:
@@ -4576,7 +4576,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -4606,7 +4606,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4639,7 +4639,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lashing-material:
     post:
@@ -4667,7 +4667,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4690,7 +4690,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lashing-material/{id_lashing_material}:
     get:
@@ -4712,7 +4712,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -4738,7 +4738,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -4787,7 +4787,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4816,7 +4816,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /lashing-material/all/{id_task}:
     get:
@@ -4842,7 +4842,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4870,7 +4870,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo-lashing:
     post:
@@ -4901,7 +4901,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -4924,7 +4924,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo-lashing/{cargo_id}:
     get:
@@ -4949,7 +4949,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -4979,7 +4979,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -5008,7 +5008,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/inspection/{cargo_type}:
     post:
@@ -5037,7 +5037,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -5070,7 +5070,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/inspection/{cargo_id}/{cargo_type}:
     get:
@@ -5102,7 +5102,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -5137,7 +5137,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -5168,7 +5168,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -5206,7 +5206,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/condition/{cargo_id}:
     options:
@@ -5236,7 +5236,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -5283,7 +5283,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -5400,7 +5400,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/condition:
     options:
@@ -5424,7 +5424,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -5486,7 +5486,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/{cargo_id}:
     options:
@@ -5516,7 +5516,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -5609,7 +5609,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -5658,7 +5658,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo/by_task/{id_task}:
     options:
@@ -5688,7 +5688,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -5738,7 +5738,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /cargo:
     options:
@@ -5762,7 +5762,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -5820,7 +5820,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /generate-pdf/pdf-sections:
     options:
@@ -5844,7 +5844,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -5881,7 +5881,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /generate-pdf/pdf-from-data:
     options:
@@ -5905,7 +5905,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -5939,7 +5939,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /generate-pdf/pdf-only:
     options:
@@ -5963,7 +5963,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -5997,7 +5997,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /generate-pdf/ai-html:
     options:
@@ -6022,7 +6022,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -6060,7 +6060,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /surveyor/users:
     options:
@@ -6088,7 +6088,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -6135,7 +6135,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -6209,7 +6209,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /surveyor/users/{id}:
     options:
@@ -6243,7 +6243,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -6303,7 +6303,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -6375,7 +6375,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -6427,7 +6427,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /surveyor/users/{id}/export:
     get:
@@ -6488,7 +6488,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 180.0
   /surveyor/auth/login:
@@ -6517,7 +6517,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -6598,7 +6598,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /vessels:
     options:
@@ -6626,7 +6626,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -6690,7 +6690,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 40.0
     post:
@@ -6853,7 +6853,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /vessels/search:
     options:
@@ -6887,7 +6887,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -6944,7 +6944,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /vessels/{vessel_id}:
     options:
@@ -6978,7 +6978,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -7083,7 +7083,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -7227,7 +7227,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -7280,7 +7280,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /vessels/{vessel_id}/cranes:
     options:
@@ -7314,7 +7314,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -7376,7 +7376,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /vessels/{vessel_id}/cranes/{crane_id}:
     options:
@@ -7415,7 +7415,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -7480,7 +7480,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -7559,7 +7559,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -7616,7 +7616,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /vessels/{vessel_id}/cranes/{crane_id}/swl:
     options:
@@ -7655,7 +7655,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -7730,7 +7730,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /vessels/{vessel_id}/cranes/{crane_id}/swl/{swl_capacity_id}:
     options:
@@ -7774,7 +7774,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -7868,7 +7868,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -7930,7 +7930,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /notifications-surveyor:
     options:
@@ -7958,7 +7958,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -8035,7 +8035,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 80.0
   /notifications-surveyor/{notification_id}/toggle-read:
@@ -8070,7 +8070,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -8125,7 +8125,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /notifications-surveyor/{notification_id}:
     options:
@@ -8159,7 +8159,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -8211,7 +8211,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /notifications-surveyor/user/{user_id}:
     options:
@@ -8245,7 +8245,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -8311,7 +8311,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /notifications-surveyor/user/{user_id}/unread-count:
     options:
@@ -8345,7 +8345,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -8388,7 +8388,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /attendants-survey:
     options:
@@ -8416,7 +8416,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -8501,7 +8501,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /attendants-survey/task/{task_id}:
     options:
@@ -8535,7 +8535,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -8608,7 +8608,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /attendants-survey/{attendant_id}:
     options:
@@ -8642,7 +8642,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -8693,7 +8693,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding:
     options:
@@ -8721,7 +8721,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -8803,7 +8803,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/{task_id}:
     options:
@@ -8837,7 +8837,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -8937,7 +8937,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -9021,7 +9021,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -9072,7 +9072,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/comments:
     options:
@@ -9100,7 +9100,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -9186,7 +9186,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/comments/{comment_id}:
     options:
@@ -9220,7 +9220,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -9283,7 +9283,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -9359,7 +9359,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -9422,7 +9422,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/comments/task/{task_id}:
     options:
@@ -9456,7 +9456,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -9522,7 +9522,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /tasks-survey/boarding/photos:
     options:
@@ -9550,7 +9550,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
     post:
@@ -9654,7 +9654,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 150
 
@@ -9690,7 +9690,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
     put:
@@ -9761,7 +9761,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
     get:
@@ -9826,7 +9826,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -9879,7 +9879,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/photos/task/{task_id}:
@@ -9914,7 +9914,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -9984,7 +9984,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/photos/task/{task_id}/section/{section_index}:
@@ -10024,7 +10024,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -10099,7 +10099,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/photos/cargo/{cargo_id}/subsection/{sub_section_index}:
@@ -10139,7 +10139,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -10218,7 +10218,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/photos/lifting/{id_lifting}:
@@ -10253,7 +10253,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -10327,7 +10327,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/photos/lashing/{id_lashing}:
@@ -10362,7 +10362,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -10436,7 +10436,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
 
@@ -10473,7 +10473,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -10506,7 +10506,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/bollards/{task_id}:
@@ -10541,7 +10541,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -10574,7 +10574,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/internal/{task_id}:
@@ -10609,7 +10609,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -10642,7 +10642,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /tasks-survey/boarding/task/{task_id}:
@@ -10677,7 +10677,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
     get:
@@ -10709,7 +10709,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
 
@@ -10746,7 +10746,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -10871,7 +10871,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /demandas/{demanda_id}/status:
@@ -10907,7 +10907,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -10975,7 +10975,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /demandas/{demanda_id}/location:
     options:
@@ -11009,7 +11009,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -11082,7 +11082,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /demandas/{demanda_id}/moving:
     options:
@@ -11116,7 +11116,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     put:
       tags:
@@ -11162,7 +11162,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /demandas/{demanda_id}/tarefas/surveyor:
@@ -11198,7 +11198,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -11251,7 +11251,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /demandas/{demanda_id}:
     options:
@@ -11286,7 +11286,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -11374,7 +11374,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /demandas/tarefas:
     options:
@@ -11403,7 +11403,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -11446,7 +11446,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /customers:
     options:
@@ -11475,7 +11475,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -11521,7 +11521,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -11589,7 +11589,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /customers/{customer_id}:
     options:
@@ -11624,7 +11624,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -11680,7 +11680,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /customers/search:
     options:
@@ -11710,7 +11710,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -11768,7 +11768,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /clients/photo:
     options:
@@ -11791,7 +11791,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -11855,7 +11855,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /clients/photo/{id_client}:
     options:
@@ -11875,7 +11875,7 @@ paths:
           description: Resposta CORS preflight bem-sucedida
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -11925,7 +11925,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     delete:
       tags:
@@ -11973,7 +11973,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /medicoes:
     options:
@@ -12006,7 +12006,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -12055,7 +12055,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS 
   /medicoes/demanda/{demanda_id}:
     get:
@@ -12099,7 +12099,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -12136,7 +12136,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 
   /medicoes/by_id/{medicao_id}:
@@ -12181,7 +12181,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -12218,7 +12218,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /medicoes/export_csv:
     options:
@@ -12251,7 +12251,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -12318,7 +12318,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /nota_fiscal:
     options:
@@ -12351,7 +12351,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -12403,7 +12403,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /nota_fiscal/by_id/{nota_id}:
     get:
@@ -12447,7 +12447,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -12484,7 +12484,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /nota_fiscal/by_etl/{etl_id}:
     get:
@@ -12528,7 +12528,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -12565,7 +12565,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /nota_fiscal/export_csv:
     options:
@@ -12598,7 +12598,7 @@ paths:
               description: "Duração em segundos para armazenar em cache os resultados do preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     get:
       tags:
@@ -12666,7 +12666,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /pdf_extraction/extract:
     post:
@@ -12701,7 +12701,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 120
     options:
@@ -12714,7 +12714,7 @@ paths:
           description: CORS preflight response
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 120
   /pdf_extraction/upload:
@@ -12743,7 +12743,7 @@ paths:
               description: "Duração do cache de preflight"
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     post:
       tags:
@@ -12814,7 +12814,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         deadline: 180
 
@@ -12835,7 +12835,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /health/ping:
     get:
@@ -12854,7 +12854,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /db-test:
     get:
@@ -12873,7 +12873,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
   /dev/settings/app_version:
     get:
@@ -12892,7 +12892,7 @@ paths:
       security:
         - api_key: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
     options:
       tags:
@@ -12914,7 +12914,7 @@ paths:
               type: string
       security: []
       x-google-backend:
-        address: https://mse-api-152754594972.southamerica-east1.run.app
+        address: https://mse-api-915682166260.southamerica-east1.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
 securityDefinitions:
   api_key:
