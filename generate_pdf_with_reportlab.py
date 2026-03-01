@@ -329,4 +329,4 @@ def shutdown_vm():
     print("Shutdown response:", response.status_code, response.text)
 
 # No fim do script:
-# shutdown_vm()
+shutdown_vm()
