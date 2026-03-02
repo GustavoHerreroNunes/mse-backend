@@ -13245,18 +13245,18 @@ paths:
   /vm/start-pdf-generator:
     post:
       tags:
-        - VM Management
+        - System
       summary: Start PDF generator VM
-      operationId: startPdfGenerator
+      operationId: start_pdf_generator
       parameters:
         - in: header
           name: x-api-key
           required: true
           type: string
       responses:
-        200:
+        "200":
           description: VM started or already running
-        500:
+        "500":
           description: Internal error
       security:
         - api_key: []
@@ -13264,10 +13264,11 @@ paths:
         address: https://vm-starter-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         jwt_audience: https://vm-starter-ayddoiktrq-rj.a.run.app
+        deadline: 180
     options:
       tags:
         - Options
-      summary: Requisição CORS preflight para ações com app version
+      summary: Requisição CORS preflight para ações com vm
       description: Gerencia requisições CORS preflight para ações de GET, PUT e DELETE com survey PDF.
       operationId: options_app_version
       responses:
