@@ -1,0 +1,62 @@
+name: Deploy VM Starter to Cloud Run
+
+on:
+  push:
+    branches:
+      - vm-starter
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  REGION: southamerica-east1
+  SERVICE_NAME: vm-starter
+  IMAGE: southamerica-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mse-api-repo/vm-starter
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Authenticate to GCP
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # 3. Set up gcloud CLI
+      - name: Set up gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      # 4. Configure Docker for Artifact Registry
+      - name: Configure Docker for Artifact Registry
+        run: |
+          gcloud auth configure-docker southamerica-east1-docker.pkg.dev --quiet
+
+      # 5. Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t $IMAGE:${{ github.sha }} -t $IMAGE:latest .
+
+      # 6. Push Docker image to Artifact Registry
+      - name: Push Docker image
+        run: |
+          docker push $IMAGE:${{ github.sha }}
+          docker push $IMAGE:latest
+
+      # 7. Deploy to Cloud Run
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy $SERVICE_NAME \
+            --image=$IMAGE:${{ github.sha }} \
+            --region=$REGION \
+            --service-account=pdf-generator-sa@$PROJECT_ID.iam.gserviceaccount.com \
+            --set-env-vars="GCP_PROJECT_ID=$PROJECT_ID,VM_ZONE=southamerica-east1-a,VM_INSTANCE_NAME=pdf-generator-vm" \
+            --no-allow-unauthenticated \
+            --project=$PROJECT_ID \
+            --quiet
