@@ -79,7 +79,7 @@ jobs:
               docker run -d \
                 --name pdf-generator \
                 --restart unless-stopped \
-                --env-file /app/.env \
+                --env-file /home/mse_navalconsultancy/.env \
                 ${{ env.IMAGE }}:${{ github.sha }}
 
               # Clean up old images to save disk space
