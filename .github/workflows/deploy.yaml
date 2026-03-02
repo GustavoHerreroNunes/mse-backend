@@ -1,19 +1,19 @@
-name: Build and Deploy Container to GCE (Artifact Registry)
+name: Deploy PDF Generator to GCE VM
 
 on:
   push:
     branches:
-      - pdf-generation  # Change to your specific branch
+      - pdf-generation
   workflow_dispatch:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  REGION: southamerica-east1                      # Your Artifact Registry region
-  REPOSITORY: pdf-vm-repo                          # Your Artifact Registry repository name
-  IMAGE_NAME: pdf-image                               # Your container image name
-  INSTANCE_NAME: pdf-generator-vm              # Your VM instance name
-  INSTANCE_ZONE: southamerica-east1-a          # Your VM zone
-  CONTAINER_PORT: 8080                              # Matches your app's port
+  REGION: southamerica-east1
+  REPOSITORY: pdf-vm-repo
+  IMAGE_NAME: pdf-image
+  IMAGE: southamerica-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/pdf-vm-repo/pdf-image
+  INSTANCE_NAME: pdf-generator-vm
+  INSTANCE_ZONE: southamerica-east1-a
 
 jobs:
   build-and-deploy:
@@ -23,61 +23,64 @@ jobs:
       id-token: write
 
     steps:
+      # 1. Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Authenticate to GCP
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
+      # 3. Set up gcloud CLI
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ env.PROJECT_ID }}
 
-      # Configure Docker for Artifact Registry
+      # 4. Configure Docker for Artifact Registry
       - name: Configure Docker for Artifact Registry
         run: |
           gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
-      # Optional: Ensure repository exists (if you have permission)
-      # - name: Ensure Artifact Registry repository exists
-      #   run: |
-      #     gcloud artifacts repositories describe ${{ env.REPOSITORY }} \
-      #       --location=${{ env.REGION }} || \
-      #     gcloud artifacts repositories create ${{ env.REPOSITORY }} \
-      #       --repository-format=docker \
-      #       --location=${{ env.REGION }} \
-      #       --description="Docker repository for my app"
-
-      # Build and tag the Docker image
+      # 5. Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-                      -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest .
+          docker build \
+            -t ${{ env.IMAGE }}:${{ github.sha }} \
+            -t ${{ env.IMAGE }}:latest .
 
-      # Push both tags
+      # 6. Push Docker image to Artifact Registry
       - name: Push Docker image
         run: |
-          docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.IMAGE }}:${{ github.sha }}
+          docker push ${{ env.IMAGE }}:latest
 
-      # Deploy to Compute Engine VM (Container-Optimized OS)
-      - name: Deploy to Compute Engine VM
+      # 7. SSH into VM, pull new image and restart container
+      - name: Deploy to VM
         run: |
-          gcloud compute instances update-container ${{ env.INSTANCE_NAME }} \
-            --zone ${{ env.INSTANCE_ZONE }} \
-            --container-image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-            --container-restart-policy always \
-            --container-env ENVIRONMENT=production
+          gcloud compute ssh ${{ env.INSTANCE_NAME }} \
+            --zone=${{ env.INSTANCE_ZONE }} \
+            --project=${{ env.PROJECT_ID }} \
+            --command="
+              # Authenticate Docker to Artifact Registry
+              gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
-      - name: Wait for deployment to stabilize
-        run: sleep 30
+              # Pull the new image
+              docker pull ${{ env.IMAGE }}:${{ github.sha }}
 
-      - name: Health check
-        run: |
-          EXTERNAL_IP=$(gcloud compute instances describe ${{ env.INSTANCE_NAME }} \
-            --zone ${{ env.INSTANCE_ZONE }} \
-            --format='get(networkInterfaces[0].accessConfigs[0].natIP)')
-          curl -f http://${EXTERNAL_IP}:${{ env.CONTAINER_PORT }}/health || exit 1
+              # Stop and remove the existing container if running
+              docker stop pdf-generator || true
+              docker rm pdf-generator || true
+
+              # Run the new container
+              docker run -d \
+                --name pdf-generator \
+                --restart unless-stopped \
+                --env-file /app/.env \
+                ${{ env.IMAGE }}:${{ github.sha }}
+
+              # Clean up old images to save disk space
+              docker image prune -f
+            "
