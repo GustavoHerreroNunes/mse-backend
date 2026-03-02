@@ -63,6 +63,7 @@ jobs:
           gcloud compute ssh ${{ env.INSTANCE_NAME }} \
             --zone=${{ env.INSTANCE_ZONE }} \
             --project=${{ env.PROJECT_ID }} \
+            --tunnel-through-iap \
             --command="
               # Authenticate Docker to Artifact Registry
               gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
