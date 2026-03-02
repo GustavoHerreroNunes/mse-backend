@@ -8,6 +8,7 @@ from google.oauth2 import service_account
 
 load_dotenv()
 
+
 # We now fetch the raw string instead of a path
 _CREDS_JSON = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON")
 _PROJECT = os.getenv("VERTEX_AI_PROJECT", "msesolucoes")
