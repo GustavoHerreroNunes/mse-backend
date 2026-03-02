@@ -3,7 +3,7 @@ name: Build and Deploy Container to GCE (Artifact Registry)
 on:
   push:
     branches:
-      - main  # Change to your specific branch
+      - pdf-generation  # Change to your specific branch
   workflow_dispatch:
 
 env:
