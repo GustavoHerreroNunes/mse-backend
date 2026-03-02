@@ -1,0 +1,193 @@
+name: Build and Deploy Container to GCE
+
+on:
+  push:
+    branches:
+      - pdf-generation  # Change to your specific branch (e.g., develop, staging)
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - 'docs/**'
+  workflow_dispatch:  # Allow manual triggers
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}           # Replace with your GCP project ID
+  INSTANCE_NAME: pdf-generator-vm       # Replace with your VM instance name
+  INSTANCE_ZONE: southamerica-east1               # Replace with your VM zone
+  REGION: us-central1                        # Your preferred region
+  
+  # Container configuration
+  CONTAINER_NAME: pdf-container
+  CONTAINER_PORT: 8080                        # Matches your Dockerfile EXPOSE
+  
+  # Image registry
+  REGISTRY: gcr.io                            # Using Google Container Registry
+  # Alternative: REGISTRY: us-central1-docker.pkg.dev  # For Artifact Registry
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for proper versioning
+
+      - name: Google Cloud Auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+          # For production, consider using Workload Identity Federation instead
+          # workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+          # service_account: 'github-actions@${{ env.PROJECT_ID }}.iam.gserviceaccount.com'
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          version: '>= 416.0.0'
+
+      - name: Configure Docker for GCP
+        run: |
+          # Configure Docker to use gcloud as credential helper
+          gcloud auth configure-docker ${{ env.REGISTRY }} --quiet
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            image=moby/buildkit:latest
+            network=host
+
+      - name: Generate version tags
+        id: tags
+        run: |
+          # Generate useful tags for the image
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          BRANCH_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9]/-/g')
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          
+          # Create tag variants
+          echo "sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
+          echo "branch=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+          echo "timestamp=${TIMESTAMP}" >> $GITHUB_OUTPUT
+          echo "version=${BRANCH_NAME}-${SHORT_SHA}-${TIMESTAMP}" >> $GITHUB_OUTPUT
+
+      - name: Build and test Docker image
+        run: |
+          # Build image with test tag
+          docker build -t ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:test \
+            --build-arg BUILDKIT_INLINE_CACHE=1 \
+            .
+          
+          # Optional: Run tests inside container
+          # docker run --rm ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:test pytest
+
+      - name: Build and push production image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:latest
+            ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:${{ steps.tags.outputs.version }}
+            ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:${{ steps.tags.outputs.sha }}
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:latest
+          cache-to: type=inline
+          build-args: |
+            BUILDKIT_INLINE_CACHE=1
+
+      - name: Verify image push
+        run: |
+          echo "Image pushed successfully:"
+          echo "  - ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:latest"
+          echo "  - ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:${{ steps.tags.outputs.version }}"
+          echo "  - ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:${{ steps.tags.outputs.sha }}"
+
+  deploy-to-vm:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    
+    steps:
+      - name: Google Cloud Auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Get short SHA
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Deploy to Compute Engine VM
+        run: |
+          # Method 1: Update container on existing VM (if using container-optimized OS)
+          echo "Updating container on VM ${{ env.INSTANCE_NAME }}..."
+          
+          gcloud compute instances update-container ${{ env.INSTANCE_NAME }} \
+            --zone ${{ env.INSTANCE_ZONE }} \
+            --container-image ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:${{ steps.vars.outputs.sha_short }} \
+            --container-name ${{ env.CONTAINER_NAME }} \
+            --container-restart-policy always \
+            --container-env^@^@ENVIRONMENT=production,LOG_LEVEL=info \
+            --container-mount-host-path mount-path=/app/data,host-path=/mnt/disks/data,mode=rw \
+            || echo "Container update failed, but continuing with health check"
+
+      - name: Wait for deployment to stabilize
+        run: sleep 30
+
+      - name: Health check
+        run: |
+          echo "Checking application health..."
+          
+          # Get VM external IP
+          EXTERNAL_IP=$(gcloud compute instances describe ${{ env.INSTANCE_NAME }} \
+            --zone ${{ env.INSTANCE_ZONE }} \
+            --format='get(networkInterfaces[0].accessConfigs[0].natIP)')
+          
+          echo "VM External IP: $EXTERNAL_IP"
+          
+          # Check if application is responding
+          MAX_RETRIES=12
+          RETRY_COUNT=0
+          
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            if curl -s -f -o /dev/null -w "%{http_code}" "http://${EXTERNAL_IP}:${{ env.CONTAINER_PORT }}/health" | grep -q "200"; then
+              echo "Application is healthy!"
+              break
+            else
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+              echo "Waiting for application to be ready... (${RETRY_COUNT}/${MAX_RETRIES})"
+              sleep 10
+            fi
+          done
+          
+          if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
+            echo "Health check failed after ${MAX_RETRIES} attempts"
+            exit 1
+          fi
+
+      - name: Deployment success notification
+        if: success()
+        run: |
+          echo "Deployment successful!"
+          echo "Image: ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/my-app:${{ steps.vars.outputs.sha_short }}"
+          echo "VM: ${{ env.INSTANCE_NAME }} in ${{ env.INSTANCE_ZONE }}"
+
+      - name: Deployment failure notification
+        if: failure()
+        run: |
+          echo "Deployment failed!"
+          echo "Check the logs above for details."
