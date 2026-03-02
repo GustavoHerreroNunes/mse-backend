@@ -12,7 +12,7 @@ env:
   REPOSITORY: pdf-vm-repo                          # Your Artifact Registry repository name
   IMAGE_NAME: pdf-image                               # Your container image name
   INSTANCE_NAME: pdf-generator-vm              # Your VM instance name
-  INSTANCE_ZONE: southamerica-east1                       # Your VM zone
+  INSTANCE_ZONE: southamerica-east1-a          # Your VM zone
   CONTAINER_PORT: 8080                              # Matches your app's port
 
 jobs:
