@@ -69,7 +69,6 @@ jobs:
           gcloud compute instances update-container ${{ env.INSTANCE_NAME }} \
             --zone ${{ env.INSTANCE_ZONE }} \
             --container-image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-            --container-name my-app-container \
             --container-restart-policy always \
             --container-env ENVIRONMENT=production
 
