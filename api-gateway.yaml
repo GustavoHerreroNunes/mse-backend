@@ -13242,6 +13242,51 @@ paths:
         address: https://mse-api-ayddoiktrq-rj.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
         jwt_audience: https://mse-api-ayddoiktrq-rj.a.run.app
+  /vm/start-pdf-generator:
+    post:
+      tags:
+        - VM Management
+      summary: Start PDF generator VM
+      operationId: startPdfGenerator
+      parameters:
+        - in: header
+          name: x-api-key
+          required: true
+          type: string
+      responses:
+        200:
+          description: VM started or already running
+        500:
+          description: Internal error
+      security:
+        - api_key: []
+      x-google-backend:
+        address: https://vm-starter-ayddoiktrq-rj.a.run.app
+        path_translation: APPEND_PATH_TO_ADDRESS
+        jwt_audience: https://vm-starter-ayddoiktrq-rj.a.run.app
+    options:
+      tags:
+        - Options
+      summary: Requisição CORS preflight para ações com app version
+      description: Gerencia requisições CORS preflight para ações de GET, PUT e DELETE com survey PDF.
+      operationId: options_app_version
+      responses:
+        200:
+          description: Resposta CORS preflight bem-sucedida
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Max-Age:
+              type: string
+      security: []
+      x-google-backend:
+        address: https://vm-starter-ayddoiktrq-rj.a.run.app
+        path_translation: APPEND_PATH_TO_ADDRESS
+        jwt_audience: https://vm-starter-ayddoiktrq-rj.a.run.app
 securityDefinitions:
   api_key:
     type: "apiKey"
