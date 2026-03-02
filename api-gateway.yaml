@@ -13270,7 +13270,7 @@ paths:
         - Options
       summary: Requisição CORS preflight para ações com vm
       description: Gerencia requisições CORS preflight para ações de GET, PUT e DELETE com survey PDF.
-      operationId: options_app_version
+      operationId: options_start_pdf_generator
       responses:
         200:
           description: Resposta CORS preflight bem-sucedida
